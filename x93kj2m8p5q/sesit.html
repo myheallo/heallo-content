@@ -1055,7 +1055,7 @@
             <p>Pokud potřebuješ podporu, radu, nebo chceš jít hlouběji:</p>
             
             <div class="box mt-20">
-                <p><strong>📧 Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2b9b3a6b7a0bbbcb392bfabbab7b3bebebdfcbbbcb4bd">[email&#160;protected]</a></p>
+                <p><strong>📧 Email:</strong> info@katerinaheallo.com</p>
                 <p style="margin-top: 10px;"><strong>📱 Instagram:</strong> @myheallo</p>
                 <p style="margin-top: 10px;"><strong>🌐 Web:</strong> www.katerinaheallo.com</p>
             </div>
@@ -1092,7 +1092,7 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // ===== AUTO-SAVE DO LOCALSTORAGE =====
         const inputs = document.querySelectorAll('input[type="text"], textarea, input[type="checkbox"]');
         
@@ -1177,4 +1177,11 @@
         }, { threshold: 0.1 });
         
         sections.forEach(section => {
-            section.style.op
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
