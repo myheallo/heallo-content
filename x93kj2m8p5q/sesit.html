@@ -11,7 +11,7 @@
     
     <style>
         :root {
-            /* Paleta: Soft & Nurturing */
+            /* Paleta: Soft & Nurturing - Shodná se vzorem */
             --c-text-main: #5D4E4E;
             --c-text-head: #8D5B67;
             --c-accent: #D48C84;
@@ -263,7 +263,7 @@
             border: 1px dashed var(--c-accent);
         }
 
-        /* ===== VOICES GRID ===== */
+        /* ===== SPECIFIC: VOICES GRID (Pro sesit-3) ===== */
         .voices-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -293,6 +293,7 @@
             position: relative;
         }
 
+        /* Grid pro SOS u tohoto sešitu */
         .sos-grid {
             display: grid;
             gap: 10px;
@@ -321,21 +322,22 @@
                 border: none;
                 padding: 0;
                 margin: 0;
-                display: none; /* Hide all by default */
+                display: none; /* Skryje všechno ve výchozím stavu */
             }
 
-            /* Print specific sections based on class added by JS */
+            /* Logika pro tisk konkrétních sekcí */
             body.print-lekce1 #lekce1,
-            body.print-lekce1 #hlasy,
+            body.print-lekce1 #hlasy,  /* U lekce 1 tiskneme i přehled hlasů pro kontext */
             body.print-lekce2 #lekce2,
             body.print-lekce3 #lekce3,
             body.print-lekce3 #mapa-hlasu,
             body.print-sos #sos-section,
+            /* Tisk celého sešitu */
             body.print-all .section {
                 display: block !important;
             }
 
-            /* Specific Print Styling */
+            /* Specifické styly pro tisk */
             textarea, input[type="text"] {
                 border: 1px solid #ccc;
                 background: white;
@@ -347,11 +349,13 @@
                 border: 2px solid #ccc;
                 color: black !important;
             }
-            .sos-item {
+            .sos-item, .voice-card {
                 border: 1px solid #eee;
                 background: white !important;
                 color: black;
+                break-inside: avoid;
             }
+            h1, h2, h3, h4 { color: black !important; }
         }
         
         /* Mobile */
@@ -628,8 +632,9 @@
         
         function saveToLocal() {
             inputs.forEach(input => {
+                // Používáme prefix 'hlasy_', aby se data nemíchala s jinými sešity
                 if(input.type === 'checkbox') {
-                    localStorage.setItem('hlasy_' + input.id, input.checked); // Prefix pro unikátnost
+                    localStorage.setItem('hlasy_' + input.id, input.checked); 
                 } else {
                     localStorage.setItem('hlasy_' + input.id, input.value);
                 }
