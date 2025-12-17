@@ -265,6 +265,38 @@
             font-size: 0.9rem;
         }
 
+        .print-whole-page {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--c-accent);
+            text-decoration: underline;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+        .print-whole-page:hover { opacity: 1; }
+
+        /* --- PRINT STYLES (Celá stránka) --- */
+        @media print {
+            body { background: white; color: black; }
+            
+            /* Skrýt prvky nevhodné pro tisk */
+            .btn, .progress-sticky, header img, .no-print { display: none !important; }
+            
+            .container { max-width: 100%; padding: 0; margin: 0; }
+            
+            .card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid; /* Aby se karty nelámaly */
+                margin-bottom: 20px;
+                background: white !important; /* Odstraní gradienty pro tisk */
+            }
+            
+            h1, h2, h3 { color: black !important; page-break-after: avoid; }
+            a { text-decoration: none; color: black; }
+        }
+
         /* Responsive */
         @media (max-width: 600px) {
             h1 { font-size: 2.2rem; }
@@ -469,6 +501,10 @@
             <p>Jsem na tebe pyšná.<br>S láskou, Kateřina ❤️</p>
             <p style="margin-top:20px; font-size:0.8rem;">HEALLO® | Somatic Nutrition Therapy®</p>
             <a href="mailto:katerina@myheallo.info">katerina@myheallo.info</a>
+            
+            <div onclick="window.print()" class="print-whole-page">
+                🖨️ Vytisknout celého průvodce
+            </div>
         </footer>
 
     </div>
