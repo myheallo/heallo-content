@@ -3,890 +3,503 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proč stojíš u ledničky? - Welcome Guide | HEALLO®</title>
+    <title>Proč stojíš u ledničky? | HEALLO®</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            /* Paleta: Soft & Nurturing */
+            --c-text-main: #5D4E4E;      /* Hnědo-šedá */
+            --c-text-head: #8D5B67;      /* Tlumená růžová/vínová */
+            --c-accent: #D48C84;         /* Terakota */
+            --c-bg-page: #FFF9F6;        /* Velmi jemná krémová */
+            --c-bg-card: #FFFFFF;
+            --c-success: #8FB398;        /* Jemná zelená pro hotovo */
+            
+            --grad-primary: linear-gradient(135deg, #E69D8D 0%, #D48C84 100%);
+            
+            --font-head: 'Playfair Display', serif;
+            --font-body: 'Outfit', sans-serif;
+            
+            --radius-xl: 24px;
+            --radius-sm: 12px;
+            --shadow: 0 10px 30px rgba(141, 91, 103, 0.08);
         }
 
-        :root {
-            --color-primary: #4A1942;
-            --color-secondary: #FF9500;
-            --color-accent: #FFB4A2;
-            --color-bg: #FFF9F5;
-            --color-pink: #FFE5E0;
-            --color-text: #2D2D2D;
-            --color-text-light: #666;
-            --color-success: #4CAF50;
-            
-            --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-primary);
-            color: var(--color-text);
+            background-color: var(--c-bg-page);
+            color: var(--c-text-main);
+            font-family: var(--font-body);
             line-height: 1.6;
-            background: var(--color-bg);
+            font-size: 16px;
         }
 
-        /* HEADER */
-        .header {
-            background: linear-gradient(135deg, var(--color-pink) 0%, var(--color-accent) 100%);
-            padding: 40px 20px;
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
             text-align: center;
+            padding: 60px 20px 40px;
         }
 
-        .header-badge {
+        .badge {
             display: inline-block;
-            background: var(--color-secondary);
-            color: white;
+            background: #F2E6E4;
+            color: var(--c-text-head);
             padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            border-radius: 50px;
             font-weight: 600;
-            margin-bottom: 15px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .header h1 {
-            color: var(--color-primary);
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+        h1 {
+            font-family: var(--font-head);
+            font-size: 3rem;
+            color: var(--c-text-head);
             margin-bottom: 10px;
-        }
-
-        .header-subtitle {
-            color: var(--color-text-light);
-            font-size: 1.1rem;
-        }
-
-        /* PROGRESS BAR */
-        .progress-container {
-            background: white;
-            padding: 25px;
-            margin: 30px auto;
-            max-width: 900px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .progress-title {
             font-weight: 600;
-            color: var(--color-primary);
+            line-height: 1.2;
         }
 
-        .progress-percent {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-secondary);
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--c-text-main);
+            opacity: 0.8;
+            max-width: 500px;
+            margin: 0 auto 30px;
         }
 
-        .progress-bar {
+        .hero-img {
             width: 100%;
-            height: 12px;
-            background: #f0f0f0;
+            max-width: 500px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            border: 5px solid white;
+        }
+
+        /* --- PROGRESS BAR --- */
+        .progress-sticky {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            margin-bottom: 50px;
+        }
+
+        .progress-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .p-bar {
+            flex: 1;
+            height: 8px;
+            background: #F0EAE8;
             border-radius: 10px;
             overflow: hidden;
         }
 
-        .progress-fill {
+        .p-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            background: var(--c-accent);
             width: 0%;
-            transition: width 0.5s ease;
+            transition: width 0.6s ease;
+            border-radius: 10px;
         }
 
-        /* CONTAINER */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px 60px;
+        .p-text {
+            font-weight: 600;
+            color: var(--c-accent);
+            min-width: 40px;
+            text-align: right;
         }
 
-        /* INTRO */
-        .intro {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
+        /* --- CARDS & CONTENT --- */
+        section { margin-bottom: 60px; }
 
-        .intro p {
-            margin-bottom: 15px;
+        h2 {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            color: var(--c-text-head);
+            margin-bottom: 25px;
+            text-align: center;
         }
-
-        /* SECTION */
-        .section {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .section-title {
-            color: var(--color-primary);
+        
+        h3 {
+            font-family: var(--font-head);
             font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--color-pink);
-        }
-
-        /* CHECKLIST */
-        .checklist {
-            list-style: none;
-            margin: 15px 0;
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px 0;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .checklist-item:hover {
-            padding-left: 5px;
-        }
-
-        .checklist-item input[type="checkbox"] {
-            width: 22px;
-            height: 22px;
-            cursor: pointer;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .checklist-item.checked label {
-            text-decoration: line-through;
-            color: var(--color-text-light);
-        }
-
-        .checklist-item label {
-            cursor: pointer;
-            flex: 1;
-        }
-
-        /* AUDIO/MATERIAL CARD */
-        .material-card {
-            background: var(--color-pink);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .material-card h3 {
-            color: var(--color-primary);
+            color: var(--c-text-head);
             margin-bottom: 15px;
-            font-size: 1.3rem;
         }
 
-        .material-card ul {
-            list-style: none;
-            margin: 15px 0;
-        }
-
-        .material-card li {
-            padding: 8px 0;
-            padding-left: 25px;
+        .card {
+            background: var(--c-bg-card);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
             position: relative;
+            overflow: hidden;
+            border: 1px solid #FAF5F4;
         }
 
-        .material-card li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--color-secondary);
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        .material-btn {
+        /* --- BUTTONS --- */
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: var(--color-secondary);
+            justify-content: center;
+            background: var(--grad-primary);
             color: white;
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s;
             margin-top: 15px;
+            box-shadow: 0 8px 20px rgba(212, 140, 132, 0.3);
+            border: none;
+            cursor: pointer;
         }
 
-        .material-btn:hover {
-            background: #E68600;
+        .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
+            box-shadow: 0 12px 25px rgba(212, 140, 132, 0.4);
         }
 
-        .material-btn.disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            pointer-events: none;
+        .btn-ghost {
+            background: white;
+            color: var(--c-accent);
+            box-shadow: none;
+            border: 1px solid var(--c-accent);
+        }
+        .btn-ghost:hover { background: #FFF5F2; }
+
+        /* --- CHECKLISTS --- */
+        .checklist { list-style: none; margin-top: 20px; }
+        
+        .c-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: var(--radius-sm);
+            transition: 0.2s;
+            cursor: pointer;
         }
 
-        /* WEEK PLAN */
-        .week {
-            margin-bottom: 25px;
+        .c-item:hover { background: #FFF5F2; }
+
+        .c-item input {
+            appearance: none;
+            width: 24px; height: 24px;
+            border: 2px solid #E0D6D4;
+            border-radius: 50%;
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+            transition: 0.2s;
         }
 
-        .week-title {
-            background: var(--color-primary);
+        .c-item input:checked {
+            background: var(--c-success);
+            border-color: var(--c-success);
+        }
+
+        .c-item input:checked::after {
+            content: "✓";
             color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            font-weight: 600;
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
         }
 
-        /* TIPS BOX */
-        .tips-box {
-            background: linear-gradient(135deg, #FFF9F5 0%, var(--color-pink) 100%);
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid var(--color-secondary);
-            margin: 20px 0;
+        .c-item.checked span {
+            text-decoration: line-through;
+            opacity: 0.5;
         }
 
-        .tips-box h4 {
-            color: var(--color-primary);
+        /* --- WEEK PLAN & LISTS --- */
+        .week-block { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .week-block:last-child { border-bottom: none; }
+        .week-title { 
+            color: var(--c-accent); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            font-size: 0.9rem;
             margin-bottom: 10px;
         }
 
-        /* FAQ */
-        .faq-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #f0f0f0;
-        }
+        /* --- FAQ --- */
+        .faq-item { margin-bottom: 20px; }
+        .faq-q { color: var(--c-text-head); font-weight: 600; margin-bottom: 5px; }
+        .faq-a { color: var(--c-text-main); font-size: 0.95rem; }
 
-        .faq-item:last-child {
-            border-bottom: none;
-        }
-
-        .faq-question {
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 10px;
-        }
-
-        .faq-answer {
-            color: var(--color-text-light);
-        }
-
-        /* CONTACT BOX */
-        .contact-box {
-            background: var(--color-primary);
-            color: white;
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .contact-box h2 {
-            color: white;
-            margin-bottom: 15px;
-        }
-
-        .contact-box a {
-            color: var(--color-secondary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* FOOTER */
+        /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            color: var(--color-text-light);
+            padding: 60px 20px;
+            color: var(--c-text-head);
+            opacity: 0.8;
             font-size: 0.9rem;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .header {
-                padding: 30px 15px;
-            }
-
-            .section {
-                padding: 20px;
-            }
-
-            .material-card {
-                padding: 20px;
-            }
-
-            .progress-container {
-                padding: 20px;
-            }
-        }
-
-        /* ANIMATIONS */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section {
-            animation: fadeIn 0.6s ease-out;
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .card { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="header-badge">🎧 HEALLO® MINI</div>
-        <h1>POZNEJ SVÉ HLASY</h1>
-        <p class="header-subtitle">Audio program + pracovní sešit</p>
+    <header>
+        <span class="badge">HEALLO® MINI</span>
+        <h1>Poznej své hlasy</h1>
+        <p class="subtitle">Audio program + pracovní sešit pro pochopení tvých 16 hlasů.</p>
         
-        <div style="max-width: 600px; margin: 30px auto 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.15);">
-            <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/lednice.png" alt="Poznej své hlasy" style="width: 100%; height: auto; display: block;">
+        <div style="display:flex; justify-content:center;">
+            <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/lednice.png" alt="Poznej své hlasy" class="hero-img">
         </div>
     </header>
 
     <div class="container">
-        <div class="progress-container">
-            <div class="progress-header">
-                <span class="progress-title">📊 Tvůj pokrok:</span>
-                <span class="progress-percent" id="progressPercent">0%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
+        <div class="progress-sticky">
+            <div class="progress-box">
+                <span style="font-size:1.2rem;">📊</span>
+                <div class="p-bar"><div class="p-fill" id="progressFill"></div></div>
+                <div class="p-text" id="progressPercent">0%</div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-
-        <section class="intro">
-            <p><strong>Gratuluji k tvému rozhodnutí</strong> poznat své vnitřní hlasy a lépe porozumět svému vztahu k jídlu. V tomto průvodci najdeš všechny materiály, které potřebuješ pro tvou cestu k pochopení 16 hlasů tvého těla.</p>
-            
-            <p><strong>Pro nejlepší výsledky doporučuji:</strong></p>
-            <ul class="checklist">
-                <li class="checklist-item">
-                    <input type="checkbox" id="intro-1">
-                    <label for="intro-1">Postupovat postupně, lekci po lekci</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="intro-2">
-                    <label for="intro-2">Dát si čas na zpracování mezi jednotlivými lekcemi</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="intro-3">
-                    <label for="intro-3">Vyplnit pracovní sešit upřímně - nikdo jiný do něj neuvidí</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="intro-4">
-                    <label for="intro-4">Být k sobě laskavá - jde o porozumění, ne o perfekcionismus</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="intro-5">
-                    <label for="intro-5">Vrátit se k materiálům, kdykoli budeš potřebovat připomenutí</label>
-                </li>
-            </ul>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">🎧 AUDIO LEKCE</h2>
-
-            <div class="material-card">
-                <h3>Lekce 1: Jak poznat, který hlas právě mluví</h3>
-                <p><strong>V této lekci objevíš:</strong></p>
-                <ul>
-                    <li>Jak rozpoznat hlas podle jeho tónu (jemný vs. vzdorovitý vs. vyčerpaný)</li>
-                    <li>Kdy se jednotlivé hlasy nejčastěji ozývají (situace, čas, místo)</li>
-                    <li>Jaké argumenty každý hlas používá (jeho oblíbené věty)</li>
-                    <li>Praktické cvičení: Pojmenuj hlas a oslab jeho moc</li>
-                </ul>
+        <section>
+            <div class="card">
+                <h2 style="text-align: left; font-size:1.8rem;">Vítej v programu</h2>
+                <p><strong>Gratuluji k tvému rozhodnutí</strong> poznat své vnitřní hlasy a lépe porozumět svému vztahu k jídlu. V tomto průvodci najdeš všechny materiály, které potřebuješ pro tvou cestu k pochopení 16 hlasů tvého těla.</p>
                 
-                <a href="https://soundcloud.com/katerina-heallo/lekce-1-poznej-sve-hlasy/s-iATiLZlvKCz?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=d34ef3af6edf42fca18d220e4a8be9cf" class="material-btn" id="audio1-btn" target="_blank">
-                    🎧 Poslechnout Lekci 1
-                </a>
-                
-                <ul class="checklist" style="margin-top: 20px;">
-                    <li class="checklist-item">
-                        <input type="checkbox" id="lekce1-1">
-                        <label for="lekce1-1">Poslechla jsem Lekci 1</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="lekce1-2">
-                        <label for="lekce1-2">Poznámky z lekce jsem si zapsala</label>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="material-card">
-                <h3>Lekce 2: Odkud tvoje hlasy přišly</h3>
-                <p><strong>V této lekci objevíš:</strong></p>
-                <ul>
-                    <li>Jak vznikla Utěšitelka v dětství (sušenka, když ti bylo smutno)</li>
-                    <li>Odkud se vzala Nostalgička (babiččiny buchty = láska)</li>
-                    <li>Jak diety vytvořily tvou Rebelku ("Už dost!")</li>
-                    <li>Proč není tvoje chyba, že tyto hlasy máš</li>
-                </ul>
-                
-                <a href="https://soundcloud.com/katerina-heallo/lekce-2-poznej-sve-hlasy/s-YFXU0kWbgjO?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=8167e0be716442f3b802b8811200ccba" class="material-btn" id="audio2-btn" target="_blank">
-                    🎧 Poslechnout Lekci 2
-                </a>
-                
-                <ul class="checklist" style="margin-top: 20px;">
-                    <li class="checklist-item">
-                        <input type="checkbox" id="lekce2-1">
-                        <label for="lekce2-1">Poslechla jsem Lekci 2</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="lekce2-2">
-                        <label for="lekce2-2">Cvičení "Odkud přišly" jsem vyplnila v sešitě</label>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="material-card">
-                <h3>Lekce 3: Tvoje nejsilnější hlasy - Vytvoř si mapu</h3>
-                <p><strong>V této lekci objevíš:</strong></p>
-                <ul>
-                    <li>Interaktivní identifikaci: Který hlas je TVŮJ?</li>
-                    <li>Jak vytvořit osobní Mapu tvých TOP 3 hlasů</li>
-                    <li>Co každému hlasu říct, až se příště ozve</li>
-                    <li>Jak používat SOS kartu v krizových chvílích</li>
-                </ul>
-                
-                <a href="https://soundcloud.com/katerina-heallo/lekce-3-poznej-sve-hlasy/s-yPU6LcDC0Fy?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2532d1296d924a4989ff13bb0a95d748" class="material-btn" id="audio3-btn" target="_blank">
-                    🎧 Poslechnout Lekci 3
-                </a>
-                
-                <ul class="checklist" style="margin-top: 20px;">
-                    <li class="checklist-item">
-                        <input type="checkbox" id="lekce3-1">
-                        <label for="lekce3-1">Poslechla jsem Lekci 3</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="lekce3-2">
-                        <label for="lekce3-2">Vytvořila jsem si Mapu svých TOP 3 hlasů</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="lekce3-3">
-                        <label for="lekce3-3">Mám SOS kartu v mobilu</label>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">📱 INTERAKTIVNÍ PRACOVNÍ SEŠIT</h2>
-
-            <div class="material-card">
-                <h3>✨ Tvůj kompletní průvodce programem</h3>
-                <p><strong>Interaktivní pracovní sešit obsahuje VŠE:</strong></p>
-                <ul>
-                    <li>📝 Vyplnitelná cvičení ke každé lekci (ukládá se automaticky!)</li>
-                    <li>🗺️ 3x Mapa hlasů - vyplnitelný template pro tvé TOP 3 hlasy</li>
-                    <li>🆘 SOS karta - co říct každému hlasu (můžeš vytisknout)</li>
-                    <li>⚡ Bonus rychlý checklist - který hlas právě slyším</li>
-                    <li>🖨️ Možnost tisknout každou lekci zvlášť</li>
-                    <li>📊 Progress bar - sleduj svůj pokrok</li>
-                </ul>
-                
-                <div class="tips-box">
-                    <h4>💡 Jak to funguje:</h4>
-                    <p><strong>1.</strong> Otevři interaktivní sešit v prohlížeči<br>
-                    <strong>2.</strong> Vyplňuj postupně podle audio lekcí<br>
-                    <strong>3.</strong> Vše se ti automaticky ukládá do prohlížeče<br>
-                    <strong>4.</strong> Po každé lekci můžeš vytisknout jen tu sekci</p>
-                </div>
-                
-                <a href="sesit.html" class="material-btn" id="sesit-btn" style="background: var(--color-primary); font-size: 1.1rem; padding: 15px 30px;">
-                    📱 Otevřít interaktivní pracovní sešit
-                </a>
-                
-                <ul class="checklist" style="margin-top: 20px;">
-                    <li class="checklist-item">
-                        <input type="checkbox" id="sesit-1">
-                        <label for="sesit-1">Otevřela jsem pracovní sešit</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="sesit-2">
-                        <label for="sesit-2">Začala jsem vyplňovat cvičení</label>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">📅 DOPORUČENÝ POSTUP</h2>
-
-            <div class="week">
-                <div class="week-title">Týden 1: Poznání</div>
+                <h3 style="margin-top:30px; font-size:1.2rem; color:var(--c-accent);">Pro nejlepší výsledky:</h3>
                 <ul class="checklist">
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week1-1">
-                        <label for="week1-1">Den 1: Poslechni si Lekci 1 + prohlédni si přehled 16 hlasů v sešitě</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week1-2">
-                        <label for="week1-2">Den 2-3: Sleduj, které věty slyšíš (vyplň cvičení v sešitě)</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week1-3">
-                        <label for="week1-3">Den 4: Poslechni si Lekci 2 + zamysli se, odkud tvoje hlasy přišly</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week1-4">
-                        <label for="week1-4">Den 5-7: Vyplň reflexní cvičení "Odkud přišly"</label>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="week">
-                <div class="week-title">Týden 2: Mapování</div>
-                <ul class="checklist">
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week2-1">
-                        <label for="week2-1">Den 1: Poslechni si Lekci 3 + identifikuj své TOP 3 hlasy</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week2-2">
-                        <label for="week2-2">Den 2-4: Vytvoř Mapu pro každý ze svých TOP 3 hlasů</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week2-3">
-                        <label for="week2-3">Den 5: Ulož si SOS kartu do mobilu</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week2-4">
-                        <label for="week2-4">Den 6-7: Praktikuj - příště, až uslyšíš hlas, otevři Mapu</label>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="week">
-                <div class="week-title">Týden 3: Praxe</div>
-                <ul class="checklist">
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week3-1">
-                        <label for="week3-1">Používej Mapu hlasů pokaždé, když uslyšíš vnitřní hlas</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week3-2">
-                        <label for="week3-2">Vrať se k audio lekcím pro připomenutí</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week3-3">
-                        <label for="week3-3">Sleduj změny - jak se tvoje reakce mění</label>
-                    </li>
-                    <li class="checklist-item">
-                        <input type="checkbox" id="week3-4">
-                        <label for="week3-4">Buď trpělivá - změna je proces</label>
-                    </li>
+                    <label class="c-item">
+                        <input type="checkbox" id="intro-1">
+                        <span>Postupovat postupně, lekci po lekci</span>
+                    </label>
+                    <label class="c-item">
+                        <input type="checkbox" id="intro-2">
+                        <span>Dát si čas na zpracování mezi jednotlivými lekcemi</span>
+                    </label>
+                    <label class="c-item">
+                        <input type="checkbox" id="intro-3">
+                        <span>Vyplnit pracovní sešit upřímně</span>
+                    </label>
+                    <label class="c-item">
+                        <input type="checkbox" id="intro-4">
+                        <span>Být k sobě laskavá</span>
+                    </label>
                 </ul>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="section-title">💡 PRAKTICKÉ TIPY</h2>
-
-            <div class="tips-box">
-                <h4>🎧 1. Kdy poslouchat audio</h4>
-                <ul style="list-style: none; padding-left: 0;">
-                    <li style="padding: 6px 0; padding-left: 25px; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--color-secondary);">→</span>
-                        Ráno: Pro nastavení dne a uvědomění
-                    </li>
-                    <li style="padding: 6px 0; padding-left: 25px; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--color-secondary);">→</span>
-                        Večer: Pro reflexi a zklidnění
-                    </li>
-                    <li style="padding: 6px 0; padding-left: 25px; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--color-secondary);">→</span>
-                        Během cesty: Využij čas v autě nebo MHD
-                    </li>
-                </ul>
-            </div>
-
-            <div class="tips-box">
-                <h4>📝 2. Jak pracovat se sešitem</h4>
-                <ul style="list-style: none; padding-left: 0;">
-                    <li style="padding: 6px 0; padding-left: 25px; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--color-secondary);">→</span>
-                        Najdi si klidné místo, kde tě nikdo nevyruší
-                    </li>
-                    <li style="padding: 6px 0; padding-left: 25px; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--color-secondary);">→</span>
-                        Buď upřímná - nikdo do sešitu neuvidí
-                    </li>
-                    <li style="padding: 6px 0; padding-left: 25px; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--color-secondary);">→</span>
-                        Nemusíš vyplnit vše najednou
-                    </li>
-                    <li style="padding: 6px 0; padding-left: 25px; position: relative;">
-                        <span style="position: absolute; left: 0; color: var(--color-secondary);">→</span>
-                        Vracej se k němu, když potřebuješ
-                    </li>
-                </ul>
-            </div>
-
-            <div class="tips-box">
-                <h4>💚 3. Co dělat s "neúspěchy"</h4>
-                <p>Každé "uklouznutí" je data, ne selhání. Příště u ledničky: "Aha, to je zase moje Vyčerpaná" → Neobviňuj se, pojmenuj hlas → Zeptej se: "Co ve skutečnosti potřebuju?"</p>
-            </div>
-
-            <div class="tips-box">
-                <h4>🆘 4. Jak používat SOS kartu</h4>
-                <p><strong>Postup:</strong> Slyším hlas → Otevřu SOS kartu → Najdu odpověď → Řeknu hlasu větu z karty → Zeptám se: "Co doopravdy potřebuju?"</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">✨ CO ZÍSKÁŠ DÍKY TOMUTO PROGRAMU</h2>
-
-            <div style="padding: 15px 0;">
-                <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
-                    <h3 style="color: var(--color-primary); font-size: 1.1rem; margin-bottom: 8px;">Jasnost místo zmatení</h3>
-                    <p style="color: var(--color-text-light); margin: 0;">Konečně pochopíš, PROČ stojíš u ledničky, i když nejsi hladová</p>
-                </div>
-                
-                <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
-                    <h3 style="color: var(--color-primary); font-size: 1.1rem; margin-bottom: 8px;">Moc místo bezmoci</h3>
-                    <p style="color: var(--color-text-light); margin: 0;">Poznáš své hlasy → oslabuješ jejich kontrolu nad tebou</p>
-                </div>
-                
-                <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
-                    <h3 style="color: var(--color-primary); font-size: 1.1rem; margin-bottom: 8px;">Laskavost k sobě místo sebekritiky</h3>
-                    <p style="color: var(--color-text-light); margin: 0;">Přestaneš se obviňovat a začneš rozumět svému tělu</p>
-                </div>
-                
-                <div style="padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
-                    <h3 style="color: var(--color-primary); font-size: 1.1rem; margin-bottom: 8px;">Konkrétní nástroj pro každý den</h3>
-                    <p style="color: var(--color-text-light); margin: 0;">Máš Mapu hlasů a SOS kartu, ke kterým se můžeš kdykoli vrátit</p>
-                </div>
-                
-                <div style="padding: 15px 0;">
-                    <h3 style="color: var(--color-primary); font-size: 1.1rem; margin-bottom: 8px;">Vnitřní klid</h3>
-                    <p style="color: var(--color-text-light); margin: 0;">Už to není boj se silou vůle, ale klidný dialog</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">❓ NEJČASTĚJŠÍ OTÁZKY</h2>
-
-            <div class="faq-item">
-                <div class="faq-question">"Co když nepoznám svůj hlas?"</div>
-                <div class="faq-answer">Vrať se k Lekci 1 a checklistu. Zkus sledovat, kdy přichází chuť na jídlo a co jí předchází. S praxí to bude stále jasnější.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">"Co když mám víc než 3 silné hlasy?"</div>
-                <div class="faq-answer">To je naprosto v pořádku! Začni s TOP 3, které slyšíš nejčastěji. Postupně můžeš vytvořit mapy pro další hlasy.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">"Jak dlouho to trvá, než změna přijde?"</div>
-                <div class="faq-answer">Každá jsme jiná. Někdo si všimne posunu za týden, jiná za měsíc. Nejde o rychlost, ale o postupné porozumění. Buď trpělivá.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">"Co když se mi to nepovede?"</div>
-                <div class="faq-answer">"Nepovést" se to nemůže. Každé uvědomění je pokrok. I kdyby sis jen jednou u ledničky řekla "Aha, to je moje Utěšitelka" - už to je obrovský krok.</div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">✅ TVŮJ CHECKLIST ÚSPĚCHU</h2>
-            <p style="margin-bottom: 20px;">Abys měla jasno, že děláš vše, co potřebuješ:</p>
-
-            <h3 style="color: var(--color-primary); margin: 20px 0 10px;">Základy</h3>
-            <ul class="checklist">
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-1">
-                    <label for="success-1">Stáhla jsem si všechny materiály</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-2">
-                    <label for="success-2">Poslechla jsem všechny 3 audio lekce</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-3">
-                    <label for="success-3">Vyplnila jsem pracovní sešit</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-4">
-                    <label for="success-4">Vytvořila jsem Mapu svých TOP 3 hlasů</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-5">
-                    <label for="success-5">Mám SOS kartu v mobilu</label>
-                </li>
-            </ul>
-
-            <h3 style="color: var(--color-primary); margin: 20px 0 10px;">Praxe</h3>
-            <ul class="checklist">
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-6">
-                    <label for="success-6">Používám Mapu, když slyším hlas</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-7">
-                    <label for="success-7">Neobviňuji se za "uklouznutí"</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-8">
-                    <label for="success-8">Vracím se k materiálům, když potřebuju</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-9">
-                    <label for="success-9">Sleduji, jak se moje reakce mění</label>
-                </li>
-            </ul>
-
-            <h3 style="color: var(--color-primary); margin: 20px 0 10px;">Pokročilé</h3>
-            <ul class="checklist">
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-10">
-                    <label for="success-10">Umím pojmenovat svůj hlas v reálném čase</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-11">
-                    <label for="success-11">Vím, co každému hlasu říct</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-12">
-                    <label for="success-12">Znám své spouštěče</label>
-                </li>
-                <li class="checklist-item">
-                    <input type="checkbox" id="success-13">
-                    <label for="success-13">Cítím větší klid u jídla</label>
-                </li>
-            </ul>
-        </section>
-
-        <section class="section" style="background: linear-gradient(135deg, var(--color-pink) 0%, var(--color-accent) 100%);">
-            <h2 class="section-title">💝 DŮLEŽITÉ: NEJDE O DOKONALOST</h2>
+        <section>
+            <h2>Audio Lekce</h2>
             
-            <p style="margin-bottom: 20px;"><strong>Tento program NENÍ o tom:</strong></p>
-            <ul style="list-style: none; margin-bottom: 30px;">
-                <li style="padding: 8px 0;">❌ Už nikdy nesahat po jídle z emocí</li>
-                <li style="padding: 8px 0;">❌ Mít vše pod kontrolou</li>
-                <li style="padding: 8px 0;">❌ Být "dokonalá"</li>
-            </ul>
+            <div class="card">
+                <h3>01. Jak poznat, který hlas mluví</h3>
+                <p>Jak rozpoznat hlas podle tónu (jemný vs. vzdorovitý), kdy se ozývají a jaké argumenty používají. Praktické cvičení na oslabení jejich moci.</p>
+                <div style="display:flex; gap:15px; flex-wrap:wrap; align-items:center;">
+                    <a href="https://soundcloud.com/katerina-heallo/lekce-1-poznej-sve-hlasy/s-iATiLZlvKCz?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=d34ef3af6edf42fca18d220e4a8be9cf" class="btn" target="_blank">▶ Přehrát Lekci 1</a>
+                    <label class="c-item" style="margin:0;">
+                        <input type="checkbox" id="l1-done">
+                        <span>Splněno</span>
+                    </label>
+                </div>
+            </div>
 
-            <p style="margin-bottom: 20px;"><strong>Tento program JE o tom:</strong></p>
-            <ul style="list-style: none; margin-bottom: 30px;">
-                <li style="padding: 8px 0;">✅ Rozumět sobě</li>
-                <li style="padding: 8px 0;">✅ Znát své vzorce</li>
-                <li style="padding: 8px 0;">✅ Mluvit s tělem, ne proti němu</li>
-                <li style="padding: 8px 0;">✅ Být k sobě laskavá</li>
-            </ul>
+            <div class="card">
+                <h3>02. Odkud tvoje hlasy přišly</h3>
+                <p>Jak vznikla Utěšitelka (sušenka v dětství), Nostalgička (babiččiny buchty) nebo Rebelka (diety). Proč to není tvoje chyba.</p>
+                <div style="display:flex; gap:15px; flex-wrap:wrap; align-items:center;">
+                    <a href="https://soundcloud.com/katerina-heallo/lekce-2-poznej-sve-hlasy/s-YFXU0kWbgjO?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=8167e0be716442f3b802b8811200ccba" class="btn" target="_blank">▶ Přehrát Lekci 2</a>
+                    <label class="c-item" style="margin:0;">
+                        <input type="checkbox" id="l2-done">
+                        <span>Splněno</span>
+                    </label>
+                </div>
+            </div>
 
-            <div style="text-align: center; padding: 20px; background: white; border-radius: 12px; margin-top: 30px;">
-                <p style="font-size: 1.2rem; color: var(--color-primary); margin: 0;"><strong>Každý malý krok se počítá.</strong></p>
-                <p style="font-size: 1.2rem; color: var(--color-primary); margin: 10px 0 0 0;"><strong>Každé uvědomění je pokrok.</strong></p>
+            <div class="card">
+                <h3>03. Tvoje nejsilnější hlasy & Mapa</h3>
+                <p>Interaktivní identifikace: Který hlas je TVŮJ? Jak si vytvořit Mapu TOP 3 hlasů a co jim říct, až se ozvou příště.</p>
+                <div style="display:flex; gap:15px; flex-wrap:wrap; align-items:center;">
+                    <a href="https://soundcloud.com/katerina-heallo/lekce-3-poznej-sve-hlasy/s-yPU6LcDC0Fy?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=2532d1296d924a4989ff13bb0a95d748" class="btn" target="_blank">▶ Přehrát Lekci 3</a>
+                    <label class="c-item" style="margin:0;">
+                        <input type="checkbox" id="l3-done">
+                        <span>Splněno</span>
+                    </label>
+                </div>
             </div>
         </section>
 
-        <div class="contact-box">
-            <h2>Jsem s tebou na této cestě 💕</h2>
-            <p style="margin-bottom: 20px;">Máš-li otázky nebo potřebuješ podporu, napiš mi:</p>
-            <p>📧 Email: <a href="mailto:katerina@myheallo.info">katerina@myheallo.info</a></p>
-            <p>📱 Instagram: <a href="https://instagram.com/myheallo" target="_blank">@myheallo</a></p>
-            
-            <p style="margin-top: 30px; font-size: 1.2rem;"><strong>Jsem na tebe pyšná, že jsi tady.</strong></p>
-            <p style="font-size: 1.1rem;">S láskou, Kateřina ❤️</p>
-        </div>
+        <section>
+            <h2>Interaktivní sešit</h2>
+            <div class="card" style="background: linear-gradient(to bottom, #fff, #FFF5F2);">
+                <div style="text-align:center;">
+                    <h3>📖 Tvůj kompletní průvodce</h3>
+                    <p>Obsahuje cvičení, templates pro Mapu hlasů, SOS kartu a možnost tisku. Vše se automaticky ukládá.</p>
+                    <a href="sesit.html" class="btn btn-ghost" style="border:2px solid var(--c-accent); padding: 15px 40px;">Otevřít pracovní sešit</a>
+                </div>
+                <div style="margin-top:20px; display:flex; justify-content:center;">
+                    <label class="c-item">
+                        <input type="checkbox" id="sesit-opened">
+                        <span>Mám sešit připravený</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Doporučený postup</h2>
+            <div class="card">
+                
+                <div class="week-block">
+                    <div class="week-title">Týden 1: Poznání</div>
+                    <ul class="checklist">
+                        <label class="c-item">
+                            <input type="checkbox" id="w1-1">
+                            <span>Den 1: Lekce 1 + přehled hlasů v sešitě</span>
+                        </label>
+                        <label class="c-item">
+                            <input type="checkbox" id="w1-2">
+                            <span>Den 2-3: Sleduj, které věty slyšíš (vyplň v sešitě)</span>
+                        </label>
+                        <label class="c-item">
+                            <input type="checkbox" id="w1-3">
+                            <span>Den 4: Lekce 2 + zamyšlení "Odkud přišly"</span>
+                        </label>
+                    </ul>
+                </div>
+
+                <div class="week-block">
+                    <div class="week-title">Týden 2: Mapování</div>
+                    <ul class="checklist">
+                        <label class="c-item">
+                            <input type="checkbox" id="w2-1">
+                            <span>Den 1: Lekce 3 + identifikuj TOP 3 hlasy</span>
+                        </label>
+                        <label class="c-item">
+                            <input type="checkbox" id="w2-2">
+                            <span>Den 2-4: Vytvoř Mapu pro každý z hlasů</span>
+                        </label>
+                        <label class="c-item">
+                            <input type="checkbox" id="w2-3">
+                            <span>Den 5-7: Praktikuj a používej SOS kartu</span>
+                        </label>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>Praktické tipy</h2>
+            <div class="card">
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:var(--c-accent);">🎧 Kdy poslouchat</h4>
+                    <p>Ráno pro nastavení dne, nebo večer pro reflexi. Klidně využij čas v autě nebo při procházce.</p>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:var(--c-accent);">📝 Jak na sešit</h4>
+                    <p>Najdi si klidné místo. Buď upřímná - nikdo jiný to neuvidí. Nemusíš vyplnit vše najednou.</p>
+                </div>
+                <div>
+                    <h4 style="color:var(--c-accent);">💚 "Neúspěchy"</h4>
+                    <p>Každé uklouznutí je data. Příště si řekni: "Aha, to je zase moje Utěšitelka." Neobviňuj se, pojmenuj to.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Časté otázky</h2>
+            <div class="card">
+                <div class="faq-item">
+                    <div class="faq-q">Co když nepoznám svůj hlas?</div>
+                    <div class="faq-a">Vrať se k Lekci 1. Sleduj, co cítíš před jídlem. S praxí to bude jasnější.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Co když mám víc než 3 silné hlasy?</div>
+                    <div class="faq-a">To je v pořádku. Začni s TOP 3, postupně můžeš přidat další.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Jak dlouho trvá změna?</div>
+                    <div class="faq-a">Každá jsme jiná. Někdo vidí posun za týden, jiná za měsíc. Buď trpělivá.</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="card" style="background: linear-gradient(135deg, #FFF0E8 0%, #FFF 100%); border-left: 5px solid var(--c-accent);">
+                <h3 style="margin-top:0;">Nejde o dokonalost</h3>
+                <p>Tento program <strong>NENÍ</strong> o tom, že už nikdy neselžeš nebo budeš mít vše pod kontrolou.</p>
+                <p>Tento program <strong>JE</strong> o tom rozumět sobě, znát své vzorce a mluvit se svým tělem laskavě.</p>
+                <p style="margin-top:20px; font-weight:600; color:var(--c-text-head);">Každé uvědomění je pokrok.</p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Jsem na tebe pyšná.<br>S láskou, Katy ❤️</p>
+            <p style="margin-top:20px; font-size:0.8rem;">HEALLO® | Somatic Nutrition Therapy®</p>
+            <a href="mailto:katerina@myheallo.info">katerina@myheallo.info</a>
+        </footer>
 
     </div>
-
-    <footer>
-        <p>&copy; 2025 HEALLO<sup>®</sup> - Somatic Nutrition Therapy<sup>®</sup></p>
-        <p style="margin-top: 10px; font-size: 0.85rem;">
-            P.S.: Pokud znáš někoho, komu by tento program mohl pomoci, sdílej ho s ní. Děkuji 💝
-        </p>
-    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // ===== PROGRESS TRACKING =====
-            const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
-            const progressFill = document.getElementById('progressFill');
-            const progressPercent = document.getElementById('progressPercent');
+        /* Progress Logic */
+        const boxes = document.querySelectorAll('input[type="checkbox"]');
+        const fill = document.getElementById('progressFill');
+        const txt = document.getElementById('progressPercent');
 
-            // Funkce pro načtení stavu z paměti prohlížeče
-            function loadProgress() {
-                allCheckboxes.forEach(checkbox => {
-                    const saved = localStorage.getItem(checkbox.id);
-                    if (saved === 'true') {
-                        checkbox.checked = true;
-                        // Přidáme vizuální styl pro hotové
-                        if(checkbox.parentElement) {
-                            checkbox.parentElement.classList.add('checked');
-                        }
-                    }
-                });
-                // Hned po načtení aktualizujeme procenta
-                updateProgress();
-            }
-
-            // Funkce pro uložení stavu
-            function saveProgress(checkbox) {
-                localStorage.setItem(checkbox.id, checkbox.checked);
-            }
-
-            // Hlavní funkce pro výpočet procent
-            function updateProgress() {
-                const total = allCheckboxes.length;
-                // Spočítáme aktuálně zaškrtnuté
-                const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-                
-                // Ošetření dělení nulou a výpočet
-                let percentage = 0;
-                if (total > 0) {
-                    percentage = Math.round((checked / total) * 100);
+        function update() {
+            let c = 0;
+            boxes.forEach(b => {
+                if(b.checked) {
+                    c++;
+                    b.parentElement.classList.add('checked');
+                } else {
+                    b.parentElement.classList.remove('checked');
                 }
-                
-                // Aktualizace grafiky (šířka proužku) a textu
-                if (progressFill) progressFill.style.width = percentage + '%';
-                if (progressPercent) progressPercent.textContent = percentage + '%';
-            }
-
-            // Přidání "posluchačů" na všechny checkboxy
-            allCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    // Vizuální přeškrtnutí textu
-                    if (this.checked) {
-                        this.parentElement.classList.add('checked');
-                    } else {
-                        this.parentElement.classList.remove('checked');
-                    }
-                    
-                    // Uložit a přepočítat
-                    saveProgress(this);
-                    updateProgress();
-                });
+                localStorage.setItem('minikurz_' + b.id, b.checked); // Unikátní prefix pro tento kurz
             });
+            const p = Math.round((c / boxes.length) * 100);
+            fill.style.width = p + '%';
+            txt.innerText = p + '%';
+        }
 
-            // Inicializace
-            loadProgress();
+        boxes.forEach(b => {
+            if(localStorage.getItem('minikurz_' + b.id) === 'true') b.checked = true;
+            b.addEventListener('change', update);
         });
+        update();
     </script>
 </body>
 </html>
