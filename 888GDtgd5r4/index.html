@@ -12,7 +12,7 @@
     <style>
         :root {
             /* Paleta: Soft & Nurturing */
-            --c-text-main: #5D4E4E;      /* Hnědo-šedá (měkčí než černá) */
+            --c-text-main: #5D4E4E;      /* Hnědo-šedá */
             --c-text-head: #8D5B67;      /* Tlumená růžová/vínová */
             --c-accent: #D48C84;         /* Terakota */
             --c-bg-page: #FFF9F6;        /* Velmi jemná krémová */
@@ -192,6 +192,17 @@
             box-shadow: none;
         }
         .btn-ghost:hover { background: #FFF5F2; }
+        
+        .btn-white-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            box-shadow: none;
+        }
+        .btn-white-outline:hover {
+            background: white;
+            color: var(--c-accent);
+        }
 
         /* --- CHECKLISTS --- */
         .checklist { list-style: none; margin-top: 20px; }
@@ -287,34 +298,39 @@
             opacity: 0.8;
             font-size: 0.9rem;
         }
+        
+        .print-whole-page {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--c-accent);
+            text-decoration: underline;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+        .print-whole-page:hover { opacity: 1; }
 
-        /* --- PRINT --- */
+        /* --- PRINT STYLES (Celá stránka) --- */
         @media print {
-            body > *:not(.print-mode) { display: none !important; }
-            body { background: white; }
+            body { background: white; color: black; }
             
-            .sos-wrapper {
-                display: block !important;
-                position: absolute;
-                top: 0; left: 0; width: 100%;
-                background: none !important;
-                border: 2px solid #ccc;
-                color: black !important;
+            /* Skrýt prvky nevhodné pro tisk */
+            .btn, .progress-sticky, header img, .no-print { display: none !important; }
+            
+            .container { max-width: 100%; padding: 0; margin: 0; }
+            .card, .sos-wrapper {
                 box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
             }
             
-            .sos-step {
-                border: 1px solid #eee;
-                background: white !important;
-                color: black !important;
-                box-shadow: none;
-                break-inside: avoid;
-            }
+            .sos-wrapper { background: #eee !important; color: black !important; }
+            .sos-step { border: 1px solid #999; }
+            .sos-num, .sos-text h4 { color: black !important; }
             
-            .sos-num { color: black !important; }
-            .sos-text h4 { color: black !important; }
-            
-            .btn { display: none; }
+            h1, h2, h3 { color: black !important; page-break-after: avoid; }
+            a { text-decoration: none; color: black; }
         }
 
         /* Responsive */
@@ -426,7 +442,7 @@
             </div>
         </section>
 
-        <section id="sos-section" class="print-mode">
+        <section id="sos-section">
             <h2>SOS Karta</h2>
             <p style="text-align:center; margin-bottom:20px;">Když cítíš, že se blíží bouře, otevři tuto kartu.</p>
 
@@ -474,9 +490,10 @@
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 10px;">
-                    <button onclick="printCard()" class="btn" style="background: white; color: var(--c-accent);">🖨 Vytisknout</button>
-                    <a href="https://pdf.katerinaheallo.com/888gdtgd5r4" target="_blank" class="btn" style="background: rgba(255,255,255,0.2); border: 1px solid white;">📥 Stáhnout PDF</a>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://pdf.katerinaheallo.com/888gdtgd5r4" target="_blank" class="btn btn-white-outline" style="padding: 15px 40px; font-size:1.1rem;">
+                        📥 Stáhnout SOS Kartu (PDF)
+                    </a>
                 </div>
             </div>
             
@@ -492,6 +509,10 @@
             <p>Jsem na tebe pyšná.<br>S láskou, Katy ❤️</p>
             <p style="margin-top:20px; font-size:0.8rem;">HEALLO® | Somatic Nutrition Therapy®</p>
             <a href="mailto:katerina@myheallo.info">katerina@myheallo.info</a>
+            
+            <div onclick="window.print()" class="print-whole-page">
+                🖨️ Vytisknout celého průvodce
+            </div>
         </footer>
 
     </div>
@@ -523,13 +544,6 @@
             b.addEventListener('change', update);
         });
         update();
-
-        /* Print Logic */
-        function printCard() {
-            document.body.classList.add('printing');
-            window.print();
-            setTimeout(() => document.body.classList.remove('printing'), 1000);
-        }
     </script>
 </body>
 </html>
