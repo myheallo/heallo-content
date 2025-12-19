@@ -11,15 +11,32 @@
     
     <style>
         :root {
-            /* --- LUXUSNÍ BAREVNÁ PALETA --- */
-            --primary-color: #b56576; 
-            --primary-dark: #9e4f60; 
-            --text-main: #2d2424; 
-            --text-light: #5e5050;
+            /* --- NOVÁ SYTĚJŠÍ PALETA (aby web nebyl bledý) --- */
+            
+            /* Hlavní barva - Tmavší "Berry Rose" */
+            --primary-color: #a64d64; 
+            
+            /* Hover efekt - Ještě hlubší */
+            --primary-dark: #8a3b50; 
+            
+            /* Hlavní text - Téměř černá s nádechem hnědé (maximální čitelnost) */
+            --text-main: #261f1f; 
+            
+            /* Vedlejší text - Středně tmavá */
+            --text-light: #4a4040;
+            
+            /* Pozadí stránky */
             --bg-light: #fdfcfc; 
-            --bg-accent: #fbf2f4; 
-            --gold: #d4a373; 
+            
+            /* Pozadí sekcí - Sytější pudrová (lepší kontrast s bílými boxy) */
+            --bg-accent: #fcecef; 
+            
+            /* Bonusy */
+            --gold: #cc9c60; 
+            
+            /* Varování */
             --alert-bg: #fffbf0;
+            
             --white: #ffffff;
         }
 
@@ -79,7 +96,7 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(181, 101, 118, 0.25);
+            box-shadow: 0 10px 25px rgba(166, 77, 100, 0.25);
             border: none;
             cursor: pointer;
             text-align: center;
@@ -88,7 +105,7 @@
         .btn:hover {
             background-color: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(181, 101, 118, 0.35);
+            box-shadow: 0 15px 35px rgba(166, 77, 100, 0.35);
         }
 
         .btn-full-width {
@@ -98,7 +115,7 @@
             margin: 40px auto;
         }
 
-        /* --- HERO SEKCE (Desktop) --- */
+        /* --- HERO SEKCE --- */
         .hero {
             padding: 120px 20px;
             background: radial-gradient(circle at top right, #fff0f3 0%, #fff 60%);
@@ -111,10 +128,10 @@
             align-items: center;
         }
         
-        /* Styl pro desktop - velký oblouk */
+        /* HERO OBRÁZEK: Tvar "Arch" (vráceno zpět, jak jsi chtěla) */
         .hero-image-container img {
             border-radius: 200px 200px 20px 20px; 
-            box-shadow: 20px 20px 0px rgba(181, 101, 118, 0.1); 
+            box-shadow: 20px 20px 0px rgba(166, 77, 100, 0.1); 
         }
 
         .hero-subtitle {
@@ -164,7 +181,7 @@
         
         .module-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(181, 101, 118, 0.1);
+            box-shadow: 0 20px 50px rgba(166, 77, 100, 0.1);
         }
 
         .module-icon {
@@ -184,30 +201,31 @@
         
         .module-card li { margin-bottom: 10px; }
 
-        /* --- AUTHOR BOX --- */
+        /* --- AUTHOR BOX (ZDE JE ZMĚNA: FOTKA DO KULATA) --- */
         .author-grid {
             display: grid;
             grid-template-columns: 350px 1fr;
-            gap: 0;
-            align-items: stretch;
+            gap: 40px;
+            align-items: center; /* Zarovnání na střed */
             background-color: var(--white);
             border-radius: 30px;
+            padding: 40px; /* Přidáno odsazení, aby fotka nebyla nalepená */
             box-shadow: 0 20px 60px rgba(0,0,0,0.04);
-            overflow: hidden;
         }
         
+        /* Styl pro fotku Kateřiny - KRUH */
         .author-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            min-height: 400px;
+            width: 300px; /* Pevná šířka */
+            height: 300px; /* Pevná výška */
+            object-fit: cover; /* Aby se fotka nedeformovala */
+            border-radius: 50%; /* DĚLÁ TO KULATÉ */
+            border: 5px solid var(--bg-accent); /* Jemný rámeček */
+            margin: 0 auto;
+            display: block;
         }
         
         .author-content {
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding: 10px;
         }
 
         /* --- CENA A BONUS --- */
@@ -216,7 +234,7 @@
             background: var(--white);
             padding: 70px 40px;
             border-radius: 30px;
-            box-shadow: 0 25px 80px rgba(181, 101, 118, 0.15);
+            box-shadow: 0 25px 80px rgba(166, 77, 100, 0.15);
             max-width: 850px;
             margin: 0 auto;
             position: relative;
@@ -253,7 +271,7 @@
             right: -25px;
             width: 80px;
             transform: rotate(15deg);
-            mix-blend-mode: multiply;
+            mix-blend-mode: multiply; /* Odstraní bílé pozadí obrázku */
         }
 
         /* --- OSTATNÍ PRVKY --- */
@@ -301,40 +319,28 @@
         footer a { color: #fff; text-decoration: none; border-bottom: 1px solid #555; transition: 0.3s; }
         footer a:hover { border-bottom-color: #fff; }
 
-        /* --- MOBILE ÚPRAVY (ZDE JSOU HLAVNÍ ZMĚNY) --- */
+        /* --- MOBILE ÚPRAVY --- */
         @media (max-width: 768px) {
             h1 { font-size: 2.3rem; }
             h2 { font-size: 1.8rem; }
             section { padding: 60px 0; }
             
-            .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
             
-            /* Změna pro HERO fotku na mobilu: */
+            /* HERO FOTKA - Zůstává Arch tvar, jen menší */
             .hero-image-container { 
-                order: -1; /* Fotka první */
-                /* Nastavíme pevnou velikost pro kruh */
-                width: 230px;
-                height: 230px;
-                margin: 0 auto 20px auto; /* Vycentrování */
-                border-radius: 50%; /* Vytvoří perfektní kruh */
-                overflow: hidden; /* Ořízne vše mimo kruh */
-                box-shadow: 10px 10px 0 rgba(181, 101, 118, 0.1);
+                order: -1; 
+                max-width: 320px;
+                margin: 0 auto; 
+            }
+             .hero-image-container img {
+                border-radius: 120px 120px 20px 20px; 
             }
             
-            .hero-image-container img { 
-                /* Resetujeme styly z desktopu */
-                border-radius: 0; 
-                box-shadow: none;
-                /* Zajistíme, aby fotka vyplnila kruh a nedeformovala se */
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center top; /* Zaměří se spíše na horní část (obličej) */
-            } 
-            
-            .author-grid { grid-template-columns: 1fr; border-radius: 20px; box-shadow: none; background: transparent; }
-            .author-photo { border-radius: 20px; min-height: 300px; margin-bottom: 20px; }
-            .author-content { padding: 30px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+            /* FOTKA KATEŘINY NA MOBILU - Stále kulatá */
+            .author-grid { grid-template-columns: 1fr; padding: 30px; }
+            .author-photo { width: 200px; height: 200px; margin-bottom: 20px; }
+            .author-content { padding: 10px 0; }
             
             .price-box { padding: 40px 20px; }
             .new-price { font-size: 3rem; }
@@ -448,7 +454,7 @@
                     <p>Pomáhám ženám, které jsou vyčerpané z přejídání a výčitek, najít cestu zpátky k sobě – bez diet, bez kázání, bez obviňování.</p>
                     <p>Mojí strategií je <strong>práce s vnitřními hlasy</strong> – protože když poznáš, KDO v tobě mluví, můžeš s ním začít mluvit jinak. Ne bojovat. Mluvit.</p>
                     <p>Mojí misí je ukázat ti, že nejsi slabá – jen jsi nevěděla, co dělat s emocemi, které tě k jídlu tlačí.</p>
-                    <p style="margin-top: 20px; font-style: italic; color: var(--text-light); border-top: 1px solid #eee; padding-top: 20px;">Prošla jsem si tím samým – roky diet, přejídání, výčitek. Až jsem zjistila, že to nejsou hlady, ale hlasy. Teď pomáhám ženám poznat jejich – bez diet, bez obviňování.</p>
+                    <p style="margin-top: 20px; font-style: italic; color: var(--text-light); border-top: 1px solid #ddd; padding-top: 20px;">Prošla jsem si tím samým – roky diet, přejídání, výčitek. Až jsem zjistila, že to nejsou hlady, ale hlasy. Teď pomáhám ženám poznat jejich – bez diet, bez obviňování.</p>
                 </div>
             </div>
         </div>
@@ -470,7 +476,7 @@
                 </div>
 
                 <div class="module-card">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/koreny.png" alt="Ikona" class="module-icon">
+                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/kvetina.png" alt="Ikona" class="module-icon">
                     <h4>Lekce 2: Odkud tvoje hlasy přišly (17 min)</h4>
                     <ul>
                         <li>→ Dětství, trauma z diet, vyhoření – pochopíš jejich původ</li>
