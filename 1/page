@@ -1,0 +1,258 @@
+<style>
+        :root {
+            /* --- NOVÁ LUXUSNÍ PALETA --- */
+            
+            /* Hlavní akční barva (Tlačítka, Ikony) - Sofistikovaná starorůžová */
+            --primary-color: #b56576; 
+            
+            /* Tmavší verze pro efekt po najetí myší (Hover) */
+            --primary-dark: #9e4f60; 
+            
+            /* Hlavní text - NENÍ obyčejná šedá, ale "Teplý Grafit" (mnohem příjemnější na čtení) */
+            --text-main: #2d2424; 
+            
+            /* Vedlejší text - Jemná zemitá šedá */
+            --text-light: #5e5050;
+            
+            /* Pozadí stránky - Čistá krémová (ne studená bílá) */
+            --bg-light: #fdfcfc; 
+            
+            /* Pozadí sekcí - Velmi jemná pudrová (Blush) */
+            --bg-accent: #fbf2f4; 
+            
+            /* Barva pro bonusy a zvýraznění - Zlatavá/Béžová */
+            --gold: #d4a373; 
+            
+            /* Varování - Jemná žlutá */
+            --alert-bg: #fffbf0;
+            
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.7; /* Zvětšeno pro lepší čitelnost */
+            font-size: 18px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-main); /* Nadpisy v barvě teplého grafitu působí luxusněji než v růžové */
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 3rem; font-weight: 700; color: var(--primary-color); } /* Pouze hlavní nadpis růžový */
+        h2 { font-size: 2.4rem; text-align: center; margin-bottom: 2.5rem; color: var(--text-main); }
+        h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--primary-color);}
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        section {
+            padding: 90px 0; /* Více prostoru = luxusnější vzhled */
+        }
+
+        /* Tlačítka - Jemnější stín */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 18px 50px; /* Větší tlačítka */
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(181, 101, 118, 0.25); /* Barevný stín */
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(181, 101, 118, 0.35);
+        }
+
+        .btn-full-width {
+            width: 100%;
+            max-width: 450px;
+            display: block;
+            margin: 40px auto;
+        }
+
+        /* Hero sekce */
+        .hero {
+            padding: 120px 20px;
+            background: radial-gradient(circle at top right, #fff0f3 0%, #fff 60%); /* Jemný gradient */
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-image-container img {
+            border-radius: 200px 200px 20px 20px; /* Moderní "ARCH" tvar (oblouk nahoře) */
+            box-shadow: 20px 20px 0px rgba(181, 101, 118, 0.1); /* Pevný stín místo rozmazaného - moderní trend */
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            display: block;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        /* Karty modulů */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .module-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.03); /* Velmi jemný okraj */
+        }
+        
+        .module-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(181, 101, 118, 0.1);
+        }
+
+        /* Author Box */
+        .author-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 50px;
+            align-items: center;
+            background-color: var(--white);
+            padding: 0;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.04);
+            overflow: hidden; /* Aby fotka nepřetékala */
+        }
+        
+        .author-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0; /* Fotka přes celou levou část */
+            min-height: 400px;
+        }
+        
+        .author-content { padding: 40px 40px 40px 0; }
+
+        /* Další prvky */
+        .checklist-item { display: flex; align-items: flex-start; margin-bottom: 25px; font-size: 1.05rem;}
+        .custom-bullet { width: 28px; height: auto; margin-right: 20px; flex-shrink: 0; margin-top: 5px; }
+        .module-icon { width: 70px; height: auto; margin-bottom: 25px; display: block; }
+
+        .bonus-box {
+            background-color: var(--bg-accent);
+            border: 2px solid var(--white);
+            padding: 50px;
+            border-radius: 30px;
+            margin: 50px 0;
+            position: relative;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(181, 101, 118, 0.1);
+        }
+        
+        .bonus-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            position: absolute;
+            top: -20px;
+            left: 40px;
+            box-shadow: 0 5px 15px rgba(181, 101, 118, 0.3);
+        }
+
+        /* Testimonials */
+        .testimonial {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+        
+        .testimonial p { font-size: 1.3rem; font-style: italic; color: var(--text-main); font-family: 'Playfair Display', serif; }
+        .testimonial strong { display: block; margin-top: 20px; font-family: 'Lato', sans-serif; font-size: 1rem; color: var(--primary-color); letter-spacing: 1px; text-transform: uppercase;}
+
+        /* Price Box */
+        .price-box {
+            text-align: center;
+            background: var(--white);
+            padding: 70px 40px;
+            border-radius: 30px;
+            box-shadow: 0 25px 80px rgba(181, 101, 118, 0.15);
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .new-price { font-size: 4rem; color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; line-height: 1; margin: 20px 0;}
+        .highlight-quote { font-family: 'Playfair Display', serif; font-size: 2rem; text-align: center; color: var(--primary-color); padding: 50px 0; margin: 50px auto; max-width: 800px; line-height: 1.4; }
+        .disclaimer-box { background-color: var(--alert-bg); border-left: 4px solid #e2c044; padding: 30px; font-size: 0.95rem; margin: 50px 0; border-radius: 0 15px 15px 0; }
+        .text-center { text-align: center; }
+        .highlight { font-weight: bold; color: var(--primary-color); }
+
+        /* Footer */
+        footer { background-color: #251e1e; color: #bbaaaa; padding: 80px 0; text-align: center; font-size: 0.9rem; }
+        footer a { color: #fff; text-decoration: none; border-bottom: 1px solid #555; transition: 0.3s; }
+        footer a:hover { border-bottom-color: #fff; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.9rem; }
+            .hero-grid, .author-grid { grid-template-columns: 1fr; gap: 30px; }
+            .hero-image-container { order: -1; margin-bottom: 20px; }
+            .hero-image-container img { border-radius: 20px; } /* Na mobilu bez složitého tvaru */
+            .author-grid { padding: 0; overflow: visible; background: transparent; box-shadow: none; }
+            .author-photo { border-radius: 20px; min-height: 300px; margin-bottom: 20px; width: 100%; }
+            .author-content { padding: 20px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+            .module-card { padding: 30px 20px; }
+            .new-price { font-size: 3rem; }
+        }
+    </style>
