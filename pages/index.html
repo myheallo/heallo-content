@@ -98,7 +98,7 @@
             margin: 40px auto;
         }
 
-        /* --- HERO SEKCE --- */
+        /* --- HERO SEKCE (Desktop) --- */
         .hero {
             padding: 120px 20px;
             background: radial-gradient(circle at top right, #fff0f3 0%, #fff 60%);
@@ -111,6 +111,7 @@
             align-items: center;
         }
         
+        /* Styl pro desktop - velký oblouk */
         .hero-image-container img {
             border-radius: 200px 200px 20px 20px; 
             box-shadow: 20px 20px 0px rgba(181, 101, 118, 0.1); 
@@ -299,25 +300,35 @@
         footer a { color: #fff; text-decoration: none; border-bottom: 1px solid #555; transition: 0.3s; }
         footer a:hover { border-bottom-color: #fff; }
 
-        /* --- MOBILE ÚPRAVY (ZDE JE ZMĚNA) --- */
+        /* --- MOBILE ÚPRAVY (ZDE JSOU HLAVNÍ ZMĚNY) --- */
         @media (max-width: 768px) {
             h1 { font-size: 2.3rem; }
             h2 { font-size: 1.8rem; }
             section { padding: 60px 0; }
             
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 30px; }
             
-            /* Změna pro fotku na mobilu: */
+            /* Změna pro HERO fotku na mobilu: */
             .hero-image-container { 
-                order: -1; 
-                max-width: 280px; /* Omezíme šířku, aby nebyla přes celý displej */
-                margin: 0 auto 30px auto; /* Vycentrujeme ji */
+                order: -1; /* Fotka první */
+                /* Nastavíme pevnou velikost pro kruh */
+                width: 230px;
+                height: 230px;
+                margin: 0 auto 20px auto; /* Vycentrování */
+                border-radius: 50%; /* Vytvoří perfektní kruh */
+                overflow: hidden; /* Ořízne vše mimo kruh */
+                box-shadow: 10px 10px 0 rgba(181, 101, 118, 0.1);
             }
             
             .hero-image-container img { 
-                /* Zachováme tvar oblouku, jen ho zmenšíme */
-                border-radius: 120px 120px 20px 20px; 
-                box-shadow: 10px 10px 0 rgba(181, 101, 118, 0.1); 
+                /* Resetujeme styly z desktopu */
+                border-radius: 0; 
+                box-shadow: none;
+                /* Zajistíme, aby fotka vyplnila kruh a nedeformovala se */
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center top; /* Zaměří se spíše na horní část (obličej) */
             } 
             
             .author-grid { grid-template-columns: 1fr; border-radius: 20px; box-shadow: none; background: transparent; }
