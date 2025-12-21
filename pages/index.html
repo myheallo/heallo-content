@@ -127,7 +127,7 @@
         .highlight { font-weight: bold; color: var(--primary-color); }
         .text-center { text-align: center; }
 
-        /* Modules Grid (from previous code) */
+        /* Modules Grid */
         .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .module-card { background: var(--white); padding: 35px 25px; border-radius: 20px; text-align: center; transition: transform 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.02); }
         .module-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(166, 77, 100, 0.15); }
@@ -136,7 +136,8 @@
         .module-card li { margin-bottom: 8px; }
 
         footer { background-color: #251e1e; color: #bbaaaa; padding: 60px 0; text-align: center; font-size: 0.9rem; }
-        footer a { color: #fff; text-decoration: none; border-bottom: 1px solid #555; transition: 0.3s; }
+        footer a { color: #fff; text-decoration: none; border-bottom: 1px solid #555; transition: 0.3s; margin: 0 10px; display: inline-block; }
+        footer a:hover { color: var(--primary-color); border-bottom-color: var(--primary-color); }
 
         /* Mobile */
         @media (max-width: 768px) {
@@ -154,6 +155,7 @@
             .price-box { padding: 40px 20px; }
             .new-price { font-size: 3rem; }
             .bonus-icon-corner { width: 60px; right: -10px; }
+            footer a { display: block; margin: 10px 0; } /* Odkazy pod sebou na mobilu */
         }
     </style>
 </head>
@@ -253,13 +255,16 @@
         <div class="container">
             <div class="author-grid">
                 <div>
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2024/02/Motiv.png" alt="Kateřina" class="author-photo">
+                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2024/02/IMG_6702-2.jpg" alt="Kateřina Heallo" class="author-photo">
                 </div>
                 <div class="author-content">
-                    <h2 style="text-align: left; margin-bottom: 20px;">Kdo jsem</h2>
-                    <p style="font-size: 1.1rem; margin-bottom: 15px;"><strong>Ahoj, já jsem Kateřina / Heallo.</strong></p>
-                    <p>Pomáhám ženám, které jsou vyčerpané z přejídání a výčitek, najít cestu zpátky k sobě – bez diet, bez kázání, bez obviňování.</p>
-                    <p>Mojí misí je ukázat ti, že nejsi slabá – jen jsi nevěděla, co dělat s emocemi, které tě k jídlu tlačí.</p>
+                    <h2 style="text-align: left; margin-bottom: 10px;">Kdo jsem</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 5px; font-weight: 600; color: var(--primary-color);">Kateřina Heallo</p>
+                    <p style="font-size: 0.95rem; margin-bottom: 20px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Zakladatelka HEALLO® a metody Somatic Nutrition Therapy®</p>
+                    
+                    <p style="margin-bottom: 15px;">Pomáhám ženám, které jsou vyčerpané z přejídání a výčitek, najít cestu zpátky k sobě – bez diet, bez kázání, bez obviňování.</p>
+                    <p style="margin-bottom: 15px;">Mojí misí je ukázat ti, že nejsi slabá – jen jsi nevěděla, co dělat s emocemi, které tě k jídlu tlačí.</p>
+                    
                     <p style="margin-top: 20px; font-style: italic; color: var(--text-light); border-top: 1px solid #ddd; padding-top: 20px;">
                         "Taky jsem tam stála. Roky diet, přejídání, výčitek. Až jsem zjistila, že to nejsou hlady, ale hlasy. Teď pomáhám ženám poznat ty jejich a najít konečně klid."
                     </p>
@@ -380,14 +385,16 @@
 
     <footer>
         <div class="container">
-            <h3>Zůstaňme v kontaktu</h3>
-            <div style="font-size: 1.2rem; margin: 30px 0; color: #dcb; font-family: 'Playfair Display', serif;">
-               <a href="#" style="margin: 0 10px;">Instagram</a>
-               <a href="#" style="margin: 0 10px;">Facebook</a>
-               <a href="#" style="margin: 0 10px;">Email</a>
+            <h3 style="margin-bottom: 30px;">Zůstaňme v kontaktu</h3>
+            <div style="font-size: 1.1rem; margin: 30px 0; font-family: 'Playfair Display', serif;">
+               <a href="https://www.instagram.com/myheallo/" target="_blank">Instagram</a>
+               <a href="https://www.youtube.com/@myheallo" target="_blank">YouTube</a>
+               <a href="https://open.spotify.com/show/4NOe8kHfiIHpmC0F08fjKo?si=f9f2a268a7bd4f2a" target="_blank">Spotify</a>
+               <a href="https://podcasts.apple.com/us/podcast/now-is-the-time/id1690538154" target="_blank">Apple Podcast</a>
+               <a href="https://www.katerinaheallo.com" target="_blank">Web</a>
             </div>
-            <p>@TVŮJ ÚČET NA SOCIÁLNÍCH SÍTÍCH</p>
-            <p style="margin-top: 40px; font-size: 0.7rem; opacity: 0.6;">
+            <p style="opacity: 0.7;">@MYHEALLO</p>
+            <p style="margin-top: 40px; font-size: 0.7rem; opacity: 0.5;">
                 <a href="#" style="border:none;">OBCHODNÍ PODMÍNKY</a> | <a href="#" style="border:none;">ZÁSADY OCHRANY OSOBNÍCH ÚDAJŮ</a>
             </p>
         </div>
