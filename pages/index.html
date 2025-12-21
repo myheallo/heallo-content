@@ -135,6 +135,10 @@
         .module-card ul { text-align: left; padding-left: 0; list-style: none; font-size: 0.95rem; color: var(--text-light); margin-bottom: 0; }
         .module-card li { margin-bottom: 8px; }
 
+        /* Feature Badge - NOVÉ */
+        .feature-badge { background: #fff; padding: 15px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); text-align: center; font-weight: 600; color: var(--text-main); }
+        .feature-badge i { color: var(--primary-color); margin-right: 10px; font-size: 1.2rem; }
+
         footer { background-color: #251e1e; color: #bbaaaa; padding: 60px 0; text-align: center; font-size: 0.9rem; }
         footer a { color: #fff; text-decoration: none; border-bottom: 1px solid #555; transition: 0.3s; margin: 0 10px; display: inline-block; }
         footer a:hover { color: var(--primary-color); border-bottom-color: var(--primary-color); }
@@ -155,9 +159,10 @@
             .price-box { padding: 40px 20px; }
             .new-price { font-size: 3rem; }
             .bonus-icon-corner { width: 60px; right: -10px; }
-            footer a { display: block; margin: 10px 0; } /* Odkazy pod sebou na mobilu */
+            footer a { display: block; margin: 10px 0; }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -165,13 +170,13 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <span class="hero-subtitle">Místo výčitek porozumění</span>
+                    <span class="hero-subtitle">Audio program v mobilu • Žádný tisk • Ihned k poslechu</span>
                     <h1>Každý den slyšíš v hlavě: "Zase jsi to pokazila?"</h1>
                     <p style="font-size: 1.2rem; font-weight: 500; margin-bottom: 20px;">Já taky. Až do chvíle, kdy jsem ten hlas přepsala.</p>
                     
                     <p>Za 7 dní budeš mít pojmenované své <strong>TOP 3 vnitřní hlasy</strong> a mapu, co každý z nich potřebuje. Zjisti, proč večer stojíš u ledničky, i když nejsi hladová – a jak se zastavit bez boje s vůlí.</p>
                     
-                    <a href="#objednavka" class="btn btn-full-width">Chci svou Mapu hlasů</a>
+                    <a href="https://form.simpleshop.cz/gN5Mp/buy/" class="btn btn-full-width">Chci svou Mapu hlasů</a>
                 </div>
                 <div class="hero-image-container">
                     <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/hero-image.jpg" alt="Žena v klidu a pohodě">
@@ -246,7 +251,7 @@
             </div>
 
             <p class="text-center" style="margin-top: 40px;">
-                <a href="#objednavka" class="btn btn-full-width">Chci začít hned (Za minutu)</a>
+                <a href="https://form.simpleshop.cz/gN5Mp/buy/" class="btn btn-full-width">Chci začít hned (První audio za minutu)</a>
             </p>
         </div>
     </section>
@@ -255,11 +260,11 @@
         <div class="container">
             <div class="author-grid">
                 <div>
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/mojefotka.png" alt="Kateřina Heallo" class="author-photo">
+                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2024/02/IMG_6702-2.jpg" alt="Kateřina Heallo" class="author-photo">
                 </div>
                 <div class="author-content">
                     <h2 style="text-align: left; margin-bottom: 10px;">Kdo jsem</h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 5px; font-weight: 600; color: var(--primary-color);">Kateřina</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 5px; font-weight: 600; color: var(--primary-color);">Kateřina Heallo</p>
                     <p style="font-size: 0.95rem; margin-bottom: 20px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Zakladatelka HEALLO® a metody Somatic Nutrition Therapy®</p>
                     
                     <p style="margin-bottom: 15px;">Pomáhám ženám, které jsou vyčerpané z přejídání a výčitek, najít cestu zpátky k sobě – bez diet, bez kázání, bez obviňování.</p>
@@ -275,8 +280,13 @@
 
     <section style="background-color: var(--white);">
         <div class="container">
-            <h2 style="margin-bottom: 40px;">Co si z toho odneseš navždy</h2>
+            <h2 style="margin-bottom: 20px;">Co si z toho odneseš navždy</h2>
             
+            <div class="feature-badge">
+                <i class="fas fa-mobile-alt"></i>
+                100% Digitální & Interaktivní: Nepotřebuješ tiskárnu. Vše vyplníš pohodlně na mobilu.
+            </div>
+
             <div class="modules-grid">
                 <div class="module-card">
                     <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/sluchatka.png" alt="Ikona" class="module-icon">
@@ -366,7 +376,7 @@
                             <span class="bonus-sub">2. Co dělat s emocí, když už je tady</span>
                             <span class="bonus-sub">3. Jak začít zítřek bez "od zítřka"</span>
                         </li>
-                        <li>📝 <strong>Journal "Moje cesta z viny ke klidu":</strong> Reflexní otázky a mapování vzorců.</li>
+                        <li>📝 <strong>Journal "Moje cesta z viny ke klidu":</strong> Interaktivní PDF (žádný tisk, píšeš rovnou v mobilu).</li>
                         <li>📲 <strong>SOS karta na mobil:</strong> Konkrétní kroky "co udělat TEĎ".</li>
                     </ul>
                     <p class="highlight" style="color: var(--primary-color);">Dnes ZDARMA při nákupu programu do 31.12.2025</p>
@@ -376,7 +386,7 @@
                 <p>Začni dnes – launch cena 497 Kč + SOS balíček ZDARMA.</p>
                 <p style="margin-bottom: 30px; font-size: 0.9rem;"><em>PS: Možná to znáš – "od příštího týdne" zní bezpečně, ale často to jen oddálí úlevu. Když začneš teď, za 5 dní můžeš mít hotovou Mapu hlasů a klid v duši.</em></p>
                 
-                <a href="LINK_NA_PLATEBNI_BRANU" class="btn btn-full-width" style="font-size: 1.3rem; padding: 22px 40px;">🚀 CHCI PŘÍSTUP ZA 497 KČ</a>
+                <a href="https://form.simpleshop.cz/gN5Mp/buy/" class="btn btn-full-width" style="font-size: 1.3rem; padding: 22px 40px;">🚀 CHCI PŘÍSTUP ZA 497 KČ</a>
                 
                 <p style="font-size: 0.8rem; margin-top: 20px; color: #999;">Platba je zabezpečena platební bránou Stripe. Po zaplacení obdržíš okamžitý přístup ke všem materiálům.</p>
             </div>
