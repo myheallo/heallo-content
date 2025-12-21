@@ -81,11 +81,17 @@
         .hero-image-container img { border-radius: 200px 200px 20px 20px; box-shadow: 15px 15px 0px rgba(166, 77, 100, 0.15); }
         .hero-subtitle { font-size: 1.1rem; color: var(--text-light); font-weight: 600; margin-bottom: 15px; display: block; font-style: italic; }
 
+        /* NOVÉ: Access Bar (Mikrosekce) */
+        .access-bar { background-color: var(--white); padding: 30px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .access-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; text-align: center; }
+        .access-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; font-weight: 600; color: var(--text-light); }
+        .access-item i { color: var(--primary-color); font-size: 1.2rem; }
+
         /* Listy */
         .checklist-item { display: flex; align-items: flex-start; margin-bottom: 15px; font-size: 1.05rem; }
         .custom-bullet { width: 24px; height: auto; margin-right: 15px; flex-shrink: 0; margin-top: 5px; mix-blend-mode: multiply; }
 
-        /* Transformation Box (Před a Po) */
+        /* Transformation Box */
         .transformation-box {
             background: var(--white);
             border: 2px solid var(--bg-accent);
@@ -135,9 +141,14 @@
         .module-card ul { text-align: left; padding-left: 0; list-style: none; font-size: 0.95rem; color: var(--text-light); margin-bottom: 0; }
         .module-card li { margin-bottom: 8px; }
 
-        /* Feature Badge - NOVÉ */
+        /* Feature Badge */
         .feature-badge { background: #fff; padding: 15px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); text-align: center; font-weight: 600; color: var(--text-main); }
         .feature-badge i { color: var(--primary-color); margin-right: 10px; font-size: 1.2rem; }
+
+        /* NOVÉ: Sneak Peek Gallery */
+        .sneak-peek-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .sneak-peek-img { width: 100%; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); border: 1px solid #eee; transition: transform 0.3s ease; }
+        .sneak-peek-img:hover { transform: scale(1.03); }
 
         footer { background-color: #251e1e; color: #bbaaaa; padding: 60px 0; text-align: center; font-size: 0.9rem; }
         footer a { color: #fff; text-decoration: none; border-bottom: 1px solid #555; transition: 0.3s; margin: 0 10px; display: inline-block; }
@@ -160,6 +171,7 @@
             .new-price { font-size: 3rem; }
             .bonus-icon-corner { width: 60px; right: -10px; }
             footer a { display: block; margin: 10px 0; }
+            .access-grid { flex-direction: column; gap: 15px; align-items: center; } /* Mobilní verze access baru */
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -184,6 +196,17 @@
             </div>
         </div>
     </section>
+
+    <div class="access-bar">
+        <div class="container">
+            <div class="access-grid">
+                <div class="access-item"><i class="fas fa-envelope-open-text"></i> Okamžité dodání e-mailem</div>
+                <div class="access-item"><i class="fas fa-mobile-alt"></i> Funguje v mobilu (PDF + Audio)</div>
+                <div class="access-item"><i class="fas fa-infinity"></i> Přístup navždy (žádný spěch)</div>
+                <div class="access-item"><i class="fas fa-shield-alt"></i> Garance vrácení peněz</div>
+            </div>
+        </div>
+    </div>
 
     <section style="background-color: var(--white);">
         <div class="container">
@@ -251,7 +274,7 @@
             </div>
 
             <p class="text-center" style="margin-top: 40px;">
-                <a href="https://form.simpleshop.cz/gN5Mp/buy/" class="btn btn-full-width">Chci začít hned (Za minutu)</a>
+                <a href="https://form.simpleshop.cz/gN5Mp/buy/" class="btn btn-full-width">Chci začít hned (První audio za minutu)</a>
             </p>
         </div>
     </section>
@@ -260,11 +283,11 @@
         <div class="container">
             <div class="author-grid">
                 <div>
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/mojefotka.png" alt="Kateřina Heallo" class="author-photo">
+                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2024/02/IMG_6702-2.jpg" alt="Kateřina Heallo" class="author-photo">
                 </div>
                 <div class="author-content">
                     <h2 style="text-align: left; margin-bottom: 10px;">Kdo jsem</h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 5px; font-weight: 600; color: var(--primary-color);">Kateřina</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 5px; font-weight: 600; color: var(--primary-color);">Kateřina Heallo</p>
                     <p style="font-size: 0.95rem; margin-bottom: 20px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Zakladatelka HEALLO® a metody Somatic Nutrition Therapy®</p>
                     
                     <p style="margin-bottom: 15px;">Pomáhám ženám, které jsou vyčerpané z přejídání a výčitek, najít cestu zpátky k sobě – bez diet, bez kázání, bez obviňování.</p>
@@ -315,6 +338,17 @@
                     </ul>
                 </div>
             </div>
+
+            <div style="margin-top: 60px; text-align: center;">
+                <h3 style="margin-bottom: 30px; font-size: 1.5rem;">Nahlédni dovnitř programu</h3>
+                <div class="sneak-peek-grid">
+                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/Snimek-obrazovky-2025-12-21-v-19.33.37.png" alt="Úvod kurzu" class="sneak-peek-img">
+                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/Snimek-obrazovky-2025-12-21-v-19.33.52.png" alt="Část kurzu" class="sneak-peek-img">
+                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/Snimek-obrazovky-2025-12-21-v-19.34.13.png" alt="Interaktivní sešit" class="sneak-peek-img">
+                </div>
+                <p style="margin-top: 20px; font-style: italic; color: #666; font-size: 0.9rem;">(Klikací materiály, čistý design, přehledné audio. Žádný chaos.)</p>
+            </div>
+
         </div>
     </section>
 
