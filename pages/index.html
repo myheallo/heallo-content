@@ -12,31 +12,14 @@
     <style>
         :root {
             /* --- NOVÁ SYTĚJŠÍ PALETA (aby web nebyl bledý) --- */
-            
-            /* Hlavní barva - Tmavší "Berry Rose" */
             --primary-color: #a64d64; 
-            
-            /* Hover efekt - Ještě hlubší */
             --primary-dark: #8a3b50; 
-            
-            /* Hlavní text - Téměř černá s nádechem hnědé (maximální čitelnost) */
             --text-main: #261f1f; 
-            
-            /* Vedlejší text - Středně tmavá */
             --text-light: #4a4040;
-            
-            /* Pozadí stránky */
             --bg-light: #fdfcfc; 
-            
-            /* Pozadí sekcí - Sytější pudrová (lepší kontrast s bílými boxy) */
             --bg-accent: #fcecef; 
-            
-            /* Bonusy */
             --gold: #cc9c60; 
-            
-            /* Varování */
             --alert-bg: #fffbf0;
-            
             --white: #ffffff;
         }
 
@@ -128,7 +111,7 @@
             align-items: center;
         }
         
-        /* HERO OBRÁZEK: Tvar "Arch" (vráceno zpět, jak jsi chtěla) */
+        /* HERO OBRÁZEK: Tvar "Arch" */
         .hero-image-container img {
             border-radius: 200px 200px 20px 20px; 
             box-shadow: 20px 20px 0px rgba(166, 77, 100, 0.1); 
@@ -146,7 +129,7 @@
             padding-left: 15px;
         }
 
-        /* --- IKONY A LISTY --- */
+        /* --- IKONY A LISTY (ZDE JE OPRAVA) --- */
         .checklist-item {
             display: flex;
             align-items: flex-start;
@@ -160,6 +143,7 @@
             margin-right: 20px;
             flex-shrink: 0;
             margin-top: 5px; 
+            mix-blend-mode: multiply; /* TENTO ŘÁDEK ODSTRANÍ BÍLÉ POZADÍ IKON */
         }
 
         /* --- MODULY --- */
@@ -189,6 +173,7 @@
             height: auto;
             margin: 0 auto 25px auto;
             display: block;
+            mix-blend-mode: multiply; /* PRO JISTOTU I U VELKÝCH IKON */
         }
 
         .module-card ul {
@@ -201,25 +186,25 @@
         
         .module-card li { margin-bottom: 10px; }
 
-        /* --- AUTHOR BOX (ZDE JE ZMĚNA: FOTKA DO KULATA) --- */
+        /* --- AUTHOR BOX --- */
         .author-grid {
             display: grid;
             grid-template-columns: 350px 1fr;
             gap: 40px;
-            align-items: center; /* Zarovnání na střed */
+            align-items: center; 
             background-color: var(--white);
             border-radius: 30px;
-            padding: 40px; /* Přidáno odsazení, aby fotka nebyla nalepená */
+            padding: 40px; 
             box-shadow: 0 20px 60px rgba(0,0,0,0.04);
         }
         
         /* Styl pro fotku Kateřiny - KRUH */
         .author-photo {
-            width: 300px; /* Pevná šířka */
-            height: 300px; /* Pevná výška */
-            object-fit: cover; /* Aby se fotka nedeformovala */
-            border-radius: 50%; /* DĚLÁ TO KULATÉ */
-            border: 5px solid var(--bg-accent); /* Jemný rámeček */
+            width: 300px; 
+            height: 300px; 
+            object-fit: cover; 
+            border-radius: 50%; 
+            border: 5px solid var(--bg-accent); 
             margin: 0 auto;
             display: block;
         }
@@ -327,7 +312,7 @@
             
             .hero-grid { grid-template-columns: 1fr; gap: 40px; }
             
-            /* HERO FOTKA - Zůstává Arch tvar, jen menší */
+            /* HERO FOTKA */
             .hero-image-container { 
                 order: -1; 
                 max-width: 320px;
@@ -337,7 +322,7 @@
                 border-radius: 120px 120px 20px 20px; 
             }
             
-            /* FOTKA KATEŘINY NA MOBILU - Stále kulatá */
+            /* FOTKA KATEŘINY NA MOBILU */
             .author-grid { grid-template-columns: 1fr; padding: 30px; }
             .author-photo { width: 200px; height: 200px; margin-bottom: 20px; }
             .author-content { padding: 10px 0; }
@@ -605,12 +590,17 @@
                     
                     <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/darek.png" alt="Dárek" class="bonus-icon-corner">
                     
-                    <h3>SOS balíček pro krizové chvíle</h3>
+                    <h3>SOS balíček: První pomoc v krizi</h3>
+                    
+                    <p style="font-style: italic; color: var(--text-light); border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+                        "Zatímco hlavní program ti dá mapu, aby ses do krize nedostala, tento bonus je tvá 'lékárnička', když emoce přece jen bouchnou a ty potřebuješ okamžitou úlevu."
+                    </p>
+
                     <p><strong>Obsahuje:</strong></p>
                     <ul style="text-align: left; margin: 20px 0; padding-left: 20px;">
-                        <li style="margin-bottom: 10px;">🎧 3 audio lekce (36 minut): Když už se to stalo, Co dělat s emocí, Jak začít zítřek</li>
-                        <li style="margin-bottom: 10px;">📓 Interaktivní journal: Reflexe, mapování vzorců, záznam emocí</li>
-                        <li style="margin-bottom: 10px;">📱 SOS karta na mobil: Věty pro Vyčerpanou, Sabotérku, 2min reset</li>
+                        <li style="margin-bottom: 10px;">🎧 <strong>Audio "Uhasit požár"</strong> (36 min): Co dělat s emocí, když už je tady a válcuje tě.</li>
+                        <li style="margin-bottom: 10px;">📓 <strong>Interaktivní journal:</strong> Rychlý záznam emocí pro vyčištění hlavy.</li>
+                        <li style="margin-bottom: 10px;">📱 <strong>SOS karta na mobil:</strong> Přesné věty, které zastaví paniku a výčitky.</li>
                     </ul>
                     <p class="highlight" style="color: var(--primary-color);">Dnes ZDARMA při nákupu programu do 31.12.2025</p>
                 </div>
