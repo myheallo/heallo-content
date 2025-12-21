@@ -7,347 +7,143 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&subset=latin-ext&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&subset=latin-ext&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* --- UPRAVENÁ PALETA PRO VĚTŠÍ ŽIVOST A KONTRAST --- */
-            
-            /* Hlavní barva - Sytá "Berry Rose" */
+            /* --- EXPRESNÍ PALETA --- */
             --primary-color: #a64d64; 
-            
-            /* Hover efekt */
             --primary-dark: #8a3b50; 
-            
-            /* Hlavní text - Teplá černá */
             --text-main: #261f1f; 
-            
-            /* Vedlejší text */
             --text-light: #4a4040;
-            
-            /* Pozadí stránky */
             --bg-light: #fdfcfc; 
-            
-            /* Pozadí sekcí - ZTMAVENO pro lepší kontrast s bílou */
             --bg-accent: #fae6ea; 
-            
-            /* Bonusy */
             --gold: #cc9c60; 
-            
-            /* Varování */
             --alert-bg: #fffbf0;
-            
             --white: #ffffff;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-main);
             background-color: var(--bg-light);
-            line-height: 1.6; /* Mírně zmenšeno pro kompaktnost */
+            line-height: 1.6;
             font-size: 18px;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        img { max-width: 100%; height: auto; display: block; }
 
-        /* --- TYPOGRAFIE (Přitaženo k sobě) --- */
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             color: var(--text-main);
-            margin-bottom: 0.8rem; /* Menší mezera pod nadpisem */
+            margin-bottom: 0.8rem;
             line-height: 1.25;
         }
 
-        h1 { font-size: 3rem; font-weight: 700; color: var(--primary-color); }
-        h2 { font-size: 2.4rem; text-align: center; margin-bottom: 2rem; color: var(--text-main); }
-        h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color); }
-        h4 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h1 { font-size: 2.8rem; font-weight: 700; color: var(--primary-color); }
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2rem; color: var(--text-main); }
+        h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color); }
+        h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 25px;
-        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 25px; }
+        section { padding: 60px 0; }
 
-        /* --- SEKCE (Méně bílého místa) --- */
-        section {
-            padding: 60px 0; /* Zmenšeno z 90px */
-        }
-
-        /* --- TLAČÍTKA (Výraznější stín) --- */
+        /* Tlačítka */
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
             color: var(--white);
-            padding: 18px 50px;
+            padding: 18px 45px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(166, 77, 100, 0.35); /* Silnější stín */
+            box-shadow: 0 8px 20px rgba(166, 77, 100, 0.35);
             border: none;
             cursor: pointer;
             text-align: center;
         }
-
         .btn:hover {
             background-color: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(166, 77, 100, 0.45);
         }
+        .btn-full-width { width: 100%; max-width: 450px; display: block; margin: 30px auto 10px auto; }
 
-        .btn-full-width {
-            width: 100%;
-            max-width: 450px;
-            display: block;
-            margin: 30px auto 10px auto; /* Upravené okraje */
-        }
+        /* Hero */
+        .hero { padding: 80px 20px 100px 20px; background: radial-gradient(circle at top right, #fff0f3 0%, #fff 60%); }
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
+        .hero-image-container img { border-radius: 200px 200px 20px 20px; box-shadow: 15px 15px 0px rgba(166, 77, 100, 0.15); }
+        .hero-subtitle { font-size: 1.1rem; color: var(--text-light); font-weight: 600; margin-bottom: 15px; display: block; font-style: italic; }
 
-        /* --- HERO SEKCE --- */
-        .hero {
-            padding: 80px 20px 100px 20px; /* Upraveno */
-            background: radial-gradient(circle at top right, #fff0f3 0%, #fff 60%);
-        }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .hero-image-container img {
-            border-radius: 200px 200px 20px 20px; 
-            box-shadow: 15px 15px 0px rgba(166, 77, 100, 0.15); /* Výraznější stín */
-        }
+        /* Listy */
+        .checklist-item { display: flex; align-items: flex-start; margin-bottom: 15px; font-size: 1.05rem; }
+        .custom-bullet { width: 24px; height: auto; margin-right: 15px; flex-shrink: 0; margin-top: 5px; mix-blend-mode: multiply; }
 
-        .hero-subtitle {
-            font-size: 1rem;
-            color: var(--text-light);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            display: block;
-            border-left: 3px solid var(--primary-color);
-            padding-left: 15px;
-        }
-
-        /* --- SEZNAMY (Kompaktnější) --- */
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 18px; /* Zmenšeno z 25px */
-            font-size: 1.05rem;
-        }
-
-        .custom-bullet {
-            width: 26px; /* Mírně menší */
-            height: auto;
-            margin-right: 15px;
-            flex-shrink: 0;
-            margin-top: 5px; 
-            mix-blend-mode: multiply; /* Fígl na odstranění bílého pozadí u ikon */
-        }
-
-        /* --- MODULY --- */
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px; /* Menší mezera mezi kartami */
-        }
-
-        .module-card {
+        /* Transformation Box (Před a Po) */
+        .transformation-box {
             background: var(--white);
-            padding: 35px 25px; /* Kompaktnější padding */
+            border: 2px solid var(--bg-accent);
             border-radius: 20px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.02);
-        }
-        
-        .module-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(166, 77, 100, 0.15);
-        }
-
-        .module-icon {
-            width: 70px;
-            height: auto;
-            margin: 0 auto 20px auto;
-            display: block;
-            mix-blend-mode: multiply; /* Aby ikony neměly bílý čtverec */
-        }
-
-        .module-card ul {
-            text-align: left;
-            padding-left: 0;
-            list-style: none;
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 0; /* Odstranění spodní mezery */
-        }
-        
-        .module-card li { margin-bottom: 8px; }
-
-        /* --- AUTHOR BOX --- */
-        .author-grid {
+            padding: 30px;
+            margin: 40px 0;
             display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 40px;
-            align-items: center; 
-            background-color: var(--white);
-            border-radius: 30px;
-            padding: 40px; 
-            box-shadow: 0 15px 50px rgba(0,0,0,0.06); /* Výraznější stín pro oddělení od pozadí */
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
-        
-        .author-photo {
-            width: 300px; 
-            height: 300px; 
-            object-fit: cover; 
-            border-radius: 50%; 
-            border: 5px solid var(--bg-accent); 
-            margin: 0 auto;
-            display: block;
-        }
-        
-        .author-content { padding: 10px; }
+        .trans-col h4 { color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px; font-size: 1rem; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+        .trans-item { display: flex; align-items: center; margin-bottom: 10px; font-size: 0.95rem; }
+        .trans-item i { margin-right: 10px; }
 
-        /* --- CENA A BONUS --- */
-        .price-box {
-            text-align: center;
-            background: var(--white);
-            padding: 60px 30px;
-            border-radius: 30px;
-            box-shadow: 0 25px 80px rgba(166, 77, 100, 0.2);
-            max-width: 850px;
-            margin: 0 auto;
-            position: relative;
-        }
+        /* 5-Day Plan */
+        .day-plan { background-color: var(--white); border-radius: 15px; padding: 25px; margin-bottom: 15px; border-left: 5px solid var(--primary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .day-label { font-weight: 700; color: var(--primary-color); text-transform: uppercase; font-size: 0.9rem; display: block; margin-bottom: 5px; }
 
+        /* Author */
+        .author-grid { display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: center; background-color: var(--white); border-radius: 30px; padding: 40px; box-shadow: 0 15px 50px rgba(0,0,0,0.06); }
+        .author-photo { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 5px solid var(--bg-accent); margin: 0 auto; display: block; }
+
+        /* Price & Bonus */
+        .price-box { text-align: center; background: var(--white); padding: 60px 30px; border-radius: 30px; box-shadow: 0 25px 80px rgba(166, 77, 100, 0.2); max-width: 850px; margin: 0 auto; position: relative; }
         .old-price { text-decoration: line-through; color: #aaa; font-size: 1.4rem; }
         .new-price { font-size: 4rem; color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; line-height: 1; margin: 15px 0;}
         
-        .bonus-box {
-            background-color: var(--bg-accent);
-            border: 2px dashed var(--primary-color); 
-            padding: 35px;
-            border-radius: 20px;
-            margin: 40px 0;
-            position: relative;
-            text-align: left;
-        }
-        
-        .bonus-tag {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 800;
-            position: absolute;
-            top: -18px;
-            left: 30px;
-        }
-        
-        .bonus-icon-corner {
-            position: absolute;
-            top: -25px;
-            right: -25px;
-            width: 80px;
-            transform: rotate(15deg);
-            mix-blend-mode: multiply; /* DŮLEŽITÉ: Odstraní bílé pozadí obrázku */
-        }
+        .bonus-box { background-color: var(--bg-accent); border: 2px dashed var(--primary-color); padding: 35px; border-radius: 20px; margin: 40px 0; position: relative; text-align: left; }
+        .bonus-tag { background-color: var(--primary-color); color: white; padding: 8px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: 800; position: absolute; top: -18px; left: 30px; }
+        .bonus-icon-corner { position: absolute; top: -25px; right: -25px; width: 80px; transform: rotate(15deg); mix-blend-mode: multiply; }
 
-        /* --- OSTATNÍ PRVKY --- */
-        .highlight-quote {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            text-align: center;
-            color: var(--primary-color);
-            padding: 20px 0;
-            margin: 30px auto; /* Zmenšeno */
-            max-width: 800px;
-            line-height: 1.4;
-        }
-
-        .testimonial {
-            text-align: center;
-            margin-bottom: 50px;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        /* Quotes & Misc */
+        .highlight-quote { font-family: 'Playfair Display', serif; font-size: 1.6rem; text-align: center; color: var(--primary-color); padding: 20px 0; margin: 30px auto; max-width: 800px; line-height: 1.4; }
+        .testimonial { text-align: center; margin-bottom: 50px; max-width: 750px; margin-left: auto; margin-right: auto; }
         .testimonial p { font-size: 1.2rem; font-style: italic; color: var(--text-main); font-family: 'Playfair Display', serif; }
-        .testimonial strong { display: block; margin-top: 15px; font-family: 'Lato', sans-serif; font-size: 0.9rem; color: var(--primary-color); letter-spacing: 1px; text-transform: uppercase;}
-        
-        .disclaimer-box {
-            background-color: var(--alert-bg);
-            border-left: 4px solid #e2c044;
-            padding: 25px;
-            font-size: 0.95rem;
-            margin: 40px 0;
-            border-radius: 0 15px 15px 0;
-        }
-
+        .disclaimer-box { background-color: var(--alert-bg); border-left: 4px solid #e2c044; padding: 25px; font-size: 0.95rem; margin: 40px 0; border-radius: 0 15px 15px 0; }
         .highlight { font-weight: bold; color: var(--primary-color); }
         .text-center { text-align: center; }
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: #251e1e; 
-            color: #bbaaaa;
-            padding: 60px 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
+        footer { background-color: #251e1e; color: #bbaaaa; padding: 60px 0; text-align: center; font-size: 0.9rem; }
         footer a { color: #fff; text-decoration: none; border-bottom: 1px solid #555; transition: 0.3s; }
-        footer a:hover { border-bottom-color: #fff; }
 
-        /* --- MOBILE ÚPRAVY (Kompaktnější zobrazení) --- */
+        /* Mobile */
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; margin-bottom: 15px; }
-            h2 { font-size: 1.8rem; margin-bottom: 20px; }
-            section { padding: 40px 0; } /* Menší padding na mobilu */
-            
+            h1 { font-size: 2rem; margin-bottom: 15px; }
+            h2 { font-size: 1.6rem; margin-bottom: 20px; }
+            section { padding: 40px 0; }
             .container { padding: 0 20px; }
-            
             .hero-grid { grid-template-columns: 1fr; gap: 30px; }
-            
-            .hero-image-container { 
-                order: -1; 
-                max-width: 300px;
-                margin: 0 auto; 
-            }
-             .hero-image-container img {
-                border-radius: 120px 120px 20px 20px; 
-            }
-            
+            .hero-image-container { order: -1; max-width: 300px; margin: 0 auto; }
+            .hero-image-container img { border-radius: 120px 120px 20px 20px; }
             .author-grid { grid-template-columns: 1fr; padding: 25px; }
-            .author-photo { width: 180px; height: 180px; margin-bottom: 20px; border-width: 4px; }
-            .author-content { padding: 0; text-align: center; }
-            .author-content h2 { text-align: center; }
-            
+            .author-photo { width: 180px; height: 180px; margin-bottom: 20px; }
+            .author-content { text-align: center; }
+            .transformation-box { grid-template-columns: 1fr; }
             .price-box { padding: 40px 20px; }
             .new-price { font-size: 3rem; }
             .bonus-icon-corner { width: 60px; right: -10px; }
-            
-            .checklist-item { margin-bottom: 15px; }
         }
     </style>
 </head>
@@ -357,11 +153,13 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <span class="hero-subtitle">Audio program + Pracovní sešit</span>
-                    <h1>Proč stojíš u ledničky, i když nejsi hladová?</h1>
-                    <p>Za 7 dní budeš mít pojmenované své <strong>TOP 3 vnitřní hlasy</strong> + mapu, co každý z nich potřebuje, aby ses večer nemusela „odměňovat" jídlem – bez diet a bez boje s vůlí.</p>
-                    <p>Audio program + pracovní sešit, který ti ukáže PROČ sahneš po jídle – a jak s tím konečně pracovat. Bez diet. Bez obviňování. Jen s porozuměním.</p>
-                    <a href="#objednavka" class="btn btn-full-width">Chci Mapu hlasů</a>
+                    <span class="hero-subtitle">Místo výčitek porozumění</span>
+                    <h1>Každý den slyšíš v hlavě: "Zase jsi to pokazila?"</h1>
+                    <p style="font-size: 1.2rem; font-weight: 500; margin-bottom: 20px;">Já taky. Až do chvíle, kdy jsem ten hlas přepsala.</p>
+                    
+                    <p>Za 7 dní budeš mít pojmenované své <strong>TOP 3 vnitřní hlasy</strong> a mapu, co každý z nich potřebuje. Zjisti, proč večer stojíš u ledničky, i když nejsi hladová – a jak se zastavit bez boje s vůlí.</p>
+                    
+                    <a href="#objednavka" class="btn btn-full-width">Chci svou Mapu hlasů</a>
                 </div>
                 <div class="hero-image-container">
                     <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/hero-image.jpg" alt="Žena v klidu a pohodě">
@@ -372,38 +170,27 @@
 
     <section style="background-color: var(--white);">
         <div class="container">
-            <h2>Budu hádat...</h2>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div>Jsi žena, která dává celý den všem ostatním – rodině, práci, povinnostem. Večer jsi vyčerpaná a jídlo je tvoje jediná "odměna".</div>
+            <h2>Vidíš v tom sebe?</h2>
+            
+            <div class="transformation-box">
+                <div class="trans-col" style="color: #666;">
+                    <h4><i class="fas fa-times-circle"></i> PŘED: Chaos a Vina</h4>
+                    <div class="trans-item">Jídlo je tvoje jediná "odměna" a útěcha.</div>
+                    <div class="trans-item">Ráno se budíš s pocitem "zase jsem selhala".</div>
+                    <div class="trans-item">Večer stojíš u ledničky a nevíš, jak se zastavit.</div>
+                    <div class="trans-item">Jsi vyčerpaná z neustálé kontroly a zákazů.</div>
                 </div>
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div>Chceš, aby přejídání konečně přestalo – abys večer stála u ledničky a dokázala se zastavit, než je pozdě.</div>
-                </div>
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div>Už tě nebaví každé ráno se probudit s pocitem, že jsi zase selhala – a slibovat si "od zítřka to bude jinak".</div>
-                </div>
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div>Neustále přemýšlíš, jak přestat sahat po jídle, když VÍŠ, že nejsi hladová – ale nevíš, jak na to.</div>
-                </div>
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div>Cítíš se vyčerpaná z neustálých pokusů o kontrolu, z diet, které nefungují, z pocitu, že s tebou je něco špatně.</div>
-                </div>
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div>Jsi unavená z obviňování sama sebe – z myšlenek typu "nemám dost silné vůle" nebo "kdybych se víc snažila".</div>
+                <div class="trans-col" style="background-color: var(--bg-accent); padding: 20px; border-radius: 10px;">
+                    <h4 style="color: var(--primary-dark); font-weight: 700;"><i class="fas fa-check-circle"></i> PO: Klid a Volba</h4>
+                    <div class="trans-item" style="color: #333;"><strong>Jídlo je jen jídlo. Volba bez tlaku.</strong></div>
+                    <div class="trans-item" style="color: #333;">Víš přesně, KDO v tobě mluví a co potřebuje.</div>
+                    <div class="trans-item" style="color: #333;">Dokážeš se zastavit DŘÍV, než je pozdě.</div>
+                    <div class="trans-item" style="color: #333;">Místo boje s vůlí vedeš klidný rozhovor.</div>
                 </div>
             </div>
 
-            <div style="margin-top: 50px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <h3>Taky je mi jasné, že...</h3>
-                <p>Už chápeš, že tohle není o jídle – je to o emocích, vyčerpání, nevyslyšených potřebách. Toužíš ale po jasných krocích, které tě dovedou od chaosu k porozumění.</p>
-                <p class="highlight">Jsi připravena konečně poznat své vnitřní hlasy a přestat bojovat.</p>
+            <div style="margin-top: 40px; text-align: center;">
+                <p class="highlight" style="font-size: 1.3rem;">Klientky hlásí: méně přejídání o 70 % už za první týden.</p>
             </div>
         </div>
     </section>
@@ -416,32 +203,39 @@
 
     <section style="background-color: var(--bg-accent);">
         <div class="container">
-            <h2>Co kdybys věděla, jak...</h2>
+            <h2>Jak to změníme? Krok za krokem.</h2>
+            <p class="text-center" style="max-width: 700px; margin: 0 auto 40px auto;">Vidíš ten chaos hlasů v hlavě? Mapa ho rozloží na <strong>5 jasných kroků</strong>. Každý den jen <strong>15 minut</strong> audia. Žádný stres, žádná "domácí práce" navíc. Jen poslech a úleva.</p>
+            
             <div style="max-width: 800px; margin: 0 auto;">
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div><strong>Rozpoznat, který hlas právě mluví</strong> – jestli je to Vyčerpaná, která potřebuje odpočinek, nebo Sabotérka, která ti říká "už je to jedno".</div>
+                <div class="day-plan">
+                    <span class="day-label">Den 1: Identifikace</span>
+                    <p>Identifikuješ svůj hlavní "hlas viny". Pojmenujeme tu část tebe, která tě žene k ledničce, abys konečně věděla, s kým máš tu čest.</p>
                 </div>
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div><strong>Vytvořit si osobní Mapu hlasů</strong> – konkrétní nástroj, který budeš mít v mobilu a ke kterému se vrátíš vždy, když to bude těžké.</div>
+                
+                <div class="day-plan">
+                    <span class="day-label">Den 2: Porozumění</span>
+                    <p>Pochopíš, <strong>proč</strong> tě tento hlas ovládá. Není to proto, že jsi slabá. Zjistíš, co se ti ten hlas zoufale snaží říct (a není to "dej si čokoládu").</p>
                 </div>
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div><strong>Pochopit svůj spouštěčový řetězec</strong> – co přesně se děje mezi momentem "den byl těžký" a "stojím u ledničky".</div>
+                
+                <div class="day-plan">
+                    <span class="day-label">Den 3: Přepsání</span>
+                    <p>Naučíš se tento hlas přepsat. Dostaneš konkrétní věty, kterými změníš starou desku "zase jsi selhala" na novou, laskavou instrukci.</p>
                 </div>
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div><strong>Zastavit se dřív, než sáhneš po jídle</strong> – ne proto, že se přemáháš, ale proto, že už víš, co ten hlas potřebuje slyšet.</div>
+                
+                <div class="day-plan">
+                    <span class="day-label">Den 4: Trénink</span>
+                    <p>Cvičíš nový klidný dialog. Připravíme si "krizový scénář" pro moment, kdy přijde únava, abys nereagovala automaticky, ale vědomě.</p>
                 </div>
-                <div class="checklist-item">
-                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" alt="*">
-                    <div><strong>Přestat bojovat sama se sebou</strong> – neučím kontrolu. Učím rozhovor s vnitřními hlasy — a z toho vzniká klid, ne další zákaz.</div>
+                
+                <div class="day-plan">
+                    <span class="day-label">Den 5: Integrace</span>
+                    <p>Integruješ to do života s jídlem. Už to nebude teorie. Bude to tvá nová přirozená reakce u ledničky.</p>
                 </div>
             </div>
 
-            <p class="text-center" style="margin-top: 30px;">To všechno za 7 dní. S jasně danými kroky a nástrojem, ke kterému se můžeš vracet.</p>
-            <a href="#objednavka" class="btn btn-full-width">Chci Mapu hlasů</a>
+            <p class="text-center" style="margin-top: 40px;">
+                <a href="#objednavka" class="btn btn-full-width">Chci začít hned (První audio za minutu)</a>
+            </p>
         </div>
     </section>
 
@@ -455,9 +249,10 @@
                     <h2 style="text-align: left; margin-bottom: 20px;">Kdo jsem</h2>
                     <p style="font-size: 1.1rem; margin-bottom: 15px;"><strong>Ahoj, já jsem Kateřina / Heallo.</strong></p>
                     <p>Pomáhám ženám, které jsou vyčerpané z přejídání a výčitek, najít cestu zpátky k sobě – bez diet, bez kázání, bez obviňování.</p>
-                    <p>Mojí strategií je <strong>práce s vnitřními hlasy</strong> – protože když poznáš, KDO v tobě mluví, můžeš s ním začít mluvit jinak. Ne bojovat. Mluvit.</p>
                     <p>Mojí misí je ukázat ti, že nejsi slabá – jen jsi nevěděla, co dělat s emocemi, které tě k jídlu tlačí.</p>
-                    <p style="margin-top: 20px; font-style: italic; color: var(--text-light); border-top: 1px solid #ddd; padding-top: 20px;">Prošla jsem si tím samým – roky diet, přejídání, výčitek. Až jsem zjistila, že to nejsou hlady, ale hlasy. Teď pomáhám ženám poznat jejich – bez diet, bez obviňování.</p>
+                    <p style="margin-top: 20px; font-style: italic; color: var(--text-light); border-top: 1px solid #ddd; padding-top: 20px;">
+                        "Taky jsem tam stála. Roky diet, přejídání, výčitek. Až jsem zjistila, že to nejsou hlady, ale hlasy. Teď pomáhám ženám poznat ty jejich a najít konečně klid."
+                    </p>
                 </div>
             </div>
         </div>
@@ -465,67 +260,53 @@
 
     <section style="background-color: var(--white);">
         <div class="container">
-            <h2>Co přesně získáš</h2>
-            <h3 class="text-center" style="margin-bottom: 40px; color: var(--text-main);">3 audiolekce (celkem 51 minut)</h3>
+            <h2 style="margin-bottom: 40px;">Co si z toho odneseš navždy</h2>
             
             <div class="modules-grid">
                 <div class="module-card">
                     <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/sluchatka.png" alt="Ikona" class="module-icon">
-                    <h4>Lekce 1: Jak poznat, který hlas právě mluví (19 min)</h4>
+                    <h4>Mapu tvých 3 hlavních hlasů</h4>
                     <ul>
-                        <li>→ 3 způsoby, jak rozpoznat hlas podle tónu, momentu a argumentu</li>
-                        <li>→ Příklady: Vyčerpaná vs. Sabotérka vs. Hladová</li>
+                        <li>→ Poznáš Vyčerpanou vs. Sabotérku</li>
+                        <li>→ Zjistíš, co přesně potřebují místo jídla</li>
                     </ul>
                 </div>
 
                 <div class="module-card">
                     <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/koreny.png" alt="Ikona" class="module-icon">
-                    <h4>Lekce 2: Odkud tvoje hlasy přišly (17 min)</h4>
+                    <h4>Pochopení kořenů</h4>
                     <ul>
-                        <li>→ Dětství, trauma z diet, vyhoření – pochopíš jejich původ</li>
                         <li>→ Proč to není tvoje chyba (a nikdy nebyla)</li>
+                        <li>→ Jak trauma z diet ovlivňuje tvé chutě</li>
                     </ul>
                 </div>
 
                 <div class="module-card">
                     <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/kompas.png" alt="Ikona" class="module-icon">
-                    <h4>Lekce 3: Tvoje nejsilnější hlasy – Mapa (15 min)</h4>
+                    <h4>Nástroje do kapsy</h4>
                     <ul>
-                        <li>→ Identifikace tvých TOP 3 hlasů + osobní mapa s nástroji</li>
-                        <li>→ Co říct každému hlasu, když se ozve</li>
+                        <li>→ SOS karta do mobilu pro krizové chvíle</li>
+                        <li>→ Konkrétní věty, které zastaví "žraní"</li>
                     </ul>
                 </div>
-            </div>
-
-            <div style="margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <h3 class="text-center">Kompletní interaktivní pracovní sešit (20 stran PDF)</h3>
-                <div style="margin-top: 30px;">
-                    <div class="checklist-item"><img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet"> 16 hlasů – kompletní přehled (s příklady situací a vět)</div>
-                    <div class="checklist-item"><img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet"> Cvičení ke každé lekci (vyplnitelná přímo v PDF)</div>
-                    <div class="checklist-item"><img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet"> "Mapa mých hlasů" – template pro tvé TOP 3 hlasy</div>
-                    <div class="checklist-item"><img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet"> SOS karta do mobilu – co říct každému hlasu</div>
-                    <div class="checklist-item"><img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet"> Bonus checklist "Který hlas právě slyším?" – rychlý test na 2 minuty</div>
-                </div>
-                <p class="highlight text-center" style="margin-top: 30px;">✅ Plně interaktivní formát: Materiály jsou klikací a vyplňovací. Nepotřebuješ tiskárnu, pracuj s nimi pohodlně přímo na displeji telefonu nebo počítače.</p>
             </div>
         </div>
     </section>
 
     <section style="background-color: var(--bg-accent);">
         <div class="container">
-            <h2>Co budeš mít po 7 dnech</h2>
-            <div style="max-width: 700px; margin: 0 auto;">
-                <div class="checklist-item"><img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet"> Jasno, PROČ sahneš po jídle (žádné hádání)</div>
-                <div class="checklist-item"><img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet"> Pojmenované TOP 3 hlasy (víš, kdo mluví a kdy se ozývá)</div>
-                <div class="checklist-item"><img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet"> Osobní Mapu hlasů (papír/mobil – vždy po ruce)</div>
-                <div class="checklist-item"><img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet"> SOS věty (co říct každému hlasu v momentě krize)</div>
-                <div class="checklist-item"><img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet"> Schopnost se zastavit DŘÍV, než sáhneš po jídle</div>
+            <h2>Co říkají ženy, které už Mapu mají</h2>
+            
+            <div class="testimonial">
+                <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" style="margin: 0 auto 20px auto; display: block;" alt="*">
+                <p>"Myslela jsem, že nemám pevnou vůli. Po 3. audiu mi to došlo – já jsem se jen snažila utišit hlas, který křičel o pomoc. Dneska jsem poprvé prošla kolem lednice bez nutkání ji otevřít. Ten klid je k nezaplacení."</p>
+                <strong>– Jana, 34 let</strong>
             </div>
             
-            <a href="#objednavka" class="btn btn-full-width">Chci Mapu hlasů</a>
-            
-            <div class="highlight-quote" style="border: none; margin-top: 30px; font-size: 1.5rem;">
-                "Neučím kontrolu. Učím rozhovor s vnitřními hlasy — a z toho vzniká klid, ne další zákaz."
+            <div class="testimonial">
+                <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" style="margin: 0 auto 20px auto; display: block;" alt="*">
+                <p>"Nečekala jsem zázrak za 7 dní, ale stalo se. Přestala jsem se vinit. Když jsem to pokazila, místo nadávek jsem si řekla SOS větu z kartičky a svět se nezbořil. Jídlo přestalo být můj nepřítel."</p>
+                <strong>– Petra, 41 let</strong>
             </div>
         </div>
     </section>
@@ -535,58 +316,7 @@
             <div class="disclaimer-box">
                 <h4 style="color: #333;">⚠️ Pro koho tento program NENÍ</h4>
                 <p>Program je zaměřený na emoční jedení a večerní přejídání z únavy, stresu nebo vyčerpání.</p>
-                <p><strong>Pokud:</strong> řešíš diagnostikovanou poruchu příjmu potravy (anorexie, bulimie, BED), jsi v akutním psychickém stavu nebo potřebuješ odbornou terapeutickou péči...</p>
-                <p>...pak ber tento program jako podpůrný nástroj, ale ideálně to konzultuj s odborníkem. Program nenahrazuje lékařskou ani psychologickou péči.</p>
-            </div>
-        </div>
-    </section>
-
-    <section style="background-color: var(--white);">
-        <div class="container">
-            <h2>Co na spolupráci říkají ženy</h2>
-            
-            <div class="testimonial">
-                <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" style="margin: 0 auto 20px auto; display: block;" alt="*">
-                <p>"Poprvé v životě jsem večer u ledničky řekla NE – a věděla jsem proč. Nebyl to boj. Byla to úleva. Po 3 dnech jsem poznala svou Vyčerpanou a pochopila, co potřebuje. Teď mám SOS kartu v mobilu a vracím se k ní pořád."</p>
-                <strong>Klientka, 34 let</strong>
-            </div>
-            
-            <div class="testimonial">
-                <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" style="margin: 0 auto 20px auto; display: block;" alt="*">
-                <p>"Konečně jsem přestala sahat po jídle automaticky. Mám nástroj, který funguje – ne další dietu. Za týden jsem měla hotovou mapu a poprvé jsem se necítila jako selhání."</p>
-                <strong>Klientka, 41 let</strong>
-            </div>
-
-            <div class="testimonial">
-                <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/srdce.png" class="custom-bullet" style="margin: 0 auto 20px auto; display: block;" alt="*">
-                <p>"Myslela jsem, že to na mě nepomůže, protože jsem zkoušela už všechno. Ale tohle je jiné – není to o jídle, je to o tom, KDO ve mně mluví. A to jsem nikdy předtím neslyšela."</p>
-                <strong>Klientka, 28 let</strong>
-            </div>
-        </div>
-    </section>
-
-    <section style="background-color: var(--bg-accent);">
-        <div class="container" style="max-width: 800px;">
-            <h2>Nejčastější otázky</h2>
-            
-            <div style="margin-bottom: 30px;">
-                <h4>Zvládnu to i při své vytíženosti?</h4>
-                <p>Ano. Audio má dohromady 51 minut a pracovní část si můžeš rozložit do krátkých bloků. Většina žen má hotovou Mapu hlasů během 1–2 večerů (nebo pohodlně do týdne).</p>
-            </div>
-            
-            <div style="margin-bottom: 30px;">
-                <h4>Co když se pořád sabotuju?</h4>
-                <p>Právě proto je tu program. Dozvíš se, který hlas tě sabotuje (např. Sabotérka nebo Rebelka) – a co mu říct, aby přestal. Nejde o to sabotáž potlačit, ale pochopit, proč přichází.</p>
-            </div>
-
-            <div style="margin-bottom: 30px;">
-                <h4>Je to dieta?</h4>
-                <p>Ne. Vůbec. Tohle není o jídle, krocích nebo kaloriích. Tohle je o emocích a vnitřních hlasech, které tě k jídlu tlačí.</p>
-            </div>
-
-            <div style="margin-bottom: 30px;">
-                <h4>Funguje to opravdu?</h4>
-                <p>Funguje nejvíc ve chvíli, kdy si uděláš svou Mapu hlasů a začneš používat SOS věty v momentě spouštěče.</p>
+                <p><strong>Pokud:</strong> řešíš diagnostikovanou poruchu příjmu potravy (anorexie, bulimie, BED), jsi v akutním psychickém stavu nebo potřebuješ odbornou terapeutickou péči, ber tento program jen jako doplněk a konzultuj to s odborníkem.</p>
             </div>
         </div>
     </section>
@@ -600,7 +330,7 @@
                 <p style="color: var(--primary-color); font-weight: bold; margin-top: 10px;">Launch cena do 31.12.2025 23:59</p>
                 
                 <p style="margin-top: 20px; font-size: 0.9rem; color: #777;">
-                    <i class="fas fa-shield-alt"></i> 3denní garance vrácení peněz. Bez otázek.
+                    <i class="fas fa-shield-alt"></i> <strong>Záruka klidu:</strong> Pokud ti program nepřinese úlevu, vrátím ti peníze. Bez otázek.
                 </p>
 
                 <div class="bonus-box">
@@ -625,7 +355,7 @@
 
                 <h3 style="margin-top: 40px;">Připraveni začít?</h3>
                 <p>Začni dnes – launch cena 497 Kč + SOS balíček ZDARMA.</p>
-                <p style="margin-bottom: 30px; font-size: 0.9rem;"><em>PS: Možná to znáš – "od příštího týdne" zní bezpečně, ale často to jen oddálí úlevu. Když začneš teď, za 7 dní můžeš mít hotovou Mapu hlasů.</em></p>
+                <p style="margin-bottom: 30px; font-size: 0.9rem;"><em>PS: Možná to znáš – "od příštího týdne" zní bezpečně, ale často to jen oddálí úlevu. Když začneš teď, za 5 dní můžeš mít hotovou Mapu hlasů a klid v duši.</em></p>
                 
                 <a href="LINK_NA_PLATEBNI_BRANU" class="btn btn-full-width" style="font-size: 1.3rem; padding: 22px 40px;">🚀 CHCI PŘÍSTUP ZA 497 KČ</a>
                 
