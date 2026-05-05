@@ -1,209 +1,122 @@
+Copy
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HEALLO® Kurzistky | Soukromá oblast</title>
-    <meta name="robots" content="noindex, nofollow">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --color-primary: #4A1942;
-            --color-secondary: #FF9500;
-            --color-accent: #FFB4A2;
-            --color-bg: #FFF9F5;
-            --color-pink: #FFE5E0;
-            --color-text: #2D2D2D;
-            --color-text-light: #666;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: var(--color-text);
-            line-height: 1.6;
-            background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-pink) 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            background: white;
-            padding: 60px 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            text-align: center;
-        }
-
-        .icon {
-            font-size: 5rem;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        h1 {
-            color: var(--color-primary);
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            margin-bottom: 20px;
-        }
-
-        .subtitle {
-            color: var(--color-text-light);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        .divider {
-            width: 60px;
-            height: 3px;
-            background: var(--color-secondary);
-            margin: 30px auto;
-            border-radius: 2px;
-        }
-
-        .info-box {
-            background: var(--color-pink);
-            padding: 25px;
-            border-radius: 12px;
-            margin: 30px 0;
-            text-align: left;
-        }
-
-        .info-box h3 {
-            color: var(--color-primary);
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
-        .info-box p {
-            margin-bottom: 10px;
-        }
-
-        .info-box ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 15px;
-        }
-
-        .info-box li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .info-box li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--color-secondary);
-            font-weight: bold;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background: var(--color-secondary);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-        }
-
-        .btn:hover {
-            background: #E68600;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 149, 0, 0.3);
-        }
-
-        .contact {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #f0f0f0;
-            color: var(--color-text-light);
-            font-size: 0.95rem;
-        }
-
-        .contact a {
-            color: var(--color-secondary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .contact a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 40px 25px;
-            }
-
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .icon {
-                font-size: 4rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soukromá oblast — HEALLO®</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --eucalyptus: #2E6B6A;
+    --eucalyptus-mid: #5A9E9B;
+    --eucalyptus-bg: #EAF4F3;
+    --terracotta: #D4612A;
+    --cream: #FAF6F1;
+  }
+ 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  html, body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--eucalyptus);
+    line-height: 1.7;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+ 
+  body {
+    background:
+      radial-gradient(circle at top right, var(--eucalyptus-bg) 0%, var(--cream) 60%),
+      var(--cream);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+  }
+ 
+  .center {
+    text-align: center;
+    max-width: 480px;
+  }
+ 
+  /* Brand mark */
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 64px;
+  }
+ 
+  .brand-mark-line {
+    height: 1px;
+    background: var(--eucalyptus-mid);
+    width: 24px;
+    opacity: 0.6;
+  }
+ 
+  .brand-mark-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--eucalyptus);
+  }
+ 
+  /* Ikona */
+  .icon {
+    font-size: 4rem;
+    margin-bottom: 32px;
+    animation: float 3s ease-in-out infinite;
+    line-height: 1;
+  }
+ 
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+ 
+  /* Hlavní věta */
+  .message {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    line-height: 1.4;
+    color: var(--eucalyptus);
+    letter-spacing: -0.005em;
+  }
+ 
+  .message em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+</style>
 </head>
 <body>
-
-    <div class="container">
-        <div class="icon">🔐</div>
-        
-        <h1>Toto je soukromá oblast</h1>
-        
-        <p class="subtitle">
-            Tato stránka je určena pouze pro účastnice kurzů HEALLO®
-        </p>
-
-        <div class="divider"></div>
-
-        <div class="info-box">
-            <h3>💌 Máš odkaz na svůj kurz?</h3>
-            <p>Pokud jsi si zakoupila některý z našich kurzů, tvůj osobní odkaz najdeš:</p>
-            <ul>
-                <li>V potvrzovacím emailu po nákupu</li>
-                <li>Ve welcome zprávě s přístupem k materiálům</li>
-                <li>V SimpleShop objednávce</li>
-            </ul>
-            <p style="margin-top: 15px; font-size: 0.95rem; color: var(--color-text-light);">
-                <em>Tip: Zkontroluj si složku spam, pokud email nevidíš</em>
-            </p>
-        </div>
-
-        <div class="info-box">
-            <h3>🌸 Hledáš mé kurzy?</h3>
-            <p>Všechny dostupné kurzy, programy a informace najdeš na mé hlavní stránce:</p>
-            <a href="https://mini.myheallo.cc" class="btn">Přejít na hlavní stránku</a>
-        </div>
-
-        <div class="contact">
-            <p><strong>Potřebuješ pomoc?</strong></p>
-            <p>
-                📧 <a href="mailto:katerina@myheallo.info">katerina@myheallo.info</a><br>
-                📱 Instagram: <a href="https://instagram.com/myheallo" target="_blank">@myheallo</a>
-            </p>
-        </div>
-    </div>
-
+ 
+<div class="center">
+ 
+  <div class="brand-mark">
+    <div class="brand-mark-line"></div>
+    <div class="brand-mark-text">HEALLO®</div>
+    <div class="brand-mark-line"></div>
+  </div>
+ 
+  <div class="icon">🔐</div>
+ 
+  <p class="message">Tahle stránka je <em>soukromá</em>.</p>
+ 
+</div>
+ 
 </body>
 </html>
+ 
