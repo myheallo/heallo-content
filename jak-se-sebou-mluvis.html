@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jak mluvíš sama se sebou kolem jídla? — Nasycená</title>
+<meta name="description" content="Krátký kvíz o tom, jak na sebe mluvíš, když dojde na jídlo. Sedm otázek, dvě minuty, žádná čísla — jen pojmenování.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ========== HEALLO® Web/Course Palette — Sales-ready ========== */
+  :root {
+    /* Mauve-rose — primary CTA + headings */
+    --mauve: #A64D64;
+    --mauve-deep: #8B3F54;
+
+    /* Dusty pink — section bgs */
+    --dusty: #FAE6EA;
+    --dusty-soft: #FCEFF2;
+
+    /* Gold — sparingly, accent */
+    --gold: #CC9C60;
+
+    /* Cream — primary background */
+    --cream: #FAF6F1;
+    --white: #FFFFFF;
+
+    /* Borders — tinted to mauve family */
+    --border-mauve: rgba(166, 77, 100, 0.18);
+    --border-mauve-strong: rgba(166, 77, 100, 0.4);
+
+    /* Tinted shadows */
+    --shadow-card: 0 6px 18px rgba(166, 77, 100, 0.10);
+    --shadow-cta: 0 4px 12px rgba(166, 77, 100, 0.28);
+    --shadow-price: 0 25px 80px rgba(166, 77, 100, 0.20);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--cream);
+    color: var(--mauve-deep);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Subtle radial gradient — dle guidelines pro web hero */
+  body {
+    background:
+      radial-gradient(circle at top right, var(--dusty-soft) 0%, var(--cream) 60%);
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+    position: relative;
+  }
+
+  /* ========== Brand mark ========== */
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 80px;
+  }
+
+  .brand-mark-line {
+    height: 1px;
+    background: var(--gold);
+    width: 28px;
+    opacity: 0.7;
+  }
+
+  .brand-mark-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ========== INTRO ========== */
+  .intro { animation: fadeIn 0.8s ease-out; }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(2.6rem, 6.5vw, 4.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    margin-bottom: 36px;
+    color: var(--mauve);
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mauve-deep);
+    opacity: 0.75;
+  }
+
+  /* Lede — italic serif subtitle */
+  .lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.55;
+    color: var(--mauve);
+    margin-bottom: 28px;
+  }
+
+  .body-text {
+    color: var(--mauve-deep);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  /* Studie card — dusty pink section bg, gold label */
+  .study-card {
+    background: var(--dusty);
+    border-radius: 20px;
+    padding: 32px;
+    margin: 52px 0;
+    box-shadow: var(--shadow-card);
+    position: relative;
+  }
+
+  .study-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .study-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--mauve-deep);
+  }
+
+  /* CTA wrapper */
+  .cta-wrap {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 44px;
+    flex-wrap: wrap;
+  }
+
+  /* Primary CTA — mauve, capsule (50px radius dle web guidelines) */
+  .start-btn {
+    background: var(--mauve);
+    border: none;
+    color: var(--cream);
+    padding: 18px 44px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    box-shadow: var(--shadow-cta);
+  }
+
+  .start-btn:hover {
+    background: var(--mauve-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(166, 77, 100, 0.35);
+  }
+
+  /* Secondary link — mauve, gentle underline */
+  .secondary-link {
+    color: var(--mauve);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-mauve-strong);
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .secondary-link:hover {
+    color: var(--mauve-deep);
+    border-bottom-color: var(--mauve);
+  }
+
+  /* ========== QUIZ ========== */
+  .quiz { display: none; animation: fadeIn 0.6s ease-out; }
+  .quiz.active { display: block; }
+
+  .progress-bar {
+    height: 2px;
+    background: var(--border-mauve);
+    margin-bottom: 56px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--mauve);
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 2px;
+  }
+
+  .progress-text {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mauve);
+    margin-bottom: 16px;
+  }
+
+  .question-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    margin-bottom: 22px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .question-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 4.2vw, 2.4rem);
+    line-height: 1.3;
+    color: var(--mauve);
+    margin-bottom: 52px;
+    letter-spacing: -0.005em;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Options — white cards with mauve hover */
+  .option {
+    background: var(--white);
+    border: 1px solid var(--border-mauve);
+    color: var(--mauve-deep);
+    padding: 24px 30px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    font-weight: 400;
+    border-radius: 14px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .option:hover {
+    border-color: var(--mauve);
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(166, 77, 100, 0.15);
+  }
+
+  /* ========== RESULT ========== */
+  .result { display: none; animation: fadeIn 1s ease-out; }
+  .result.active { display: block; }
+
+  .result-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .result-label-line {
+    height: 1px;
+    background: var(--gold);
+    width: 28px;
+    opacity: 0.7;
+  }
+
+  .result-label-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .result-archetype {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(2.8rem, 8vw, 4.8rem);
+    line-height: 1.05;
+    color: var(--mauve);
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: -0.015em;
+  }
+
+  .result-archetype em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mauve-deep);
+    opacity: 0.85;
+  }
+
+  .result-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--mauve);
+    text-align: center;
+    margin-bottom: 72px;
+    line-height: 1.5;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  .result-section {
+    margin-bottom: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-mauve);
+  }
+
+  .result-section:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  .section-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--mauve-deep);
+    font-weight: 400;
+  }
+
+  .section-text + .section-text { margin-top: 18px; }
+
+  /* Quote — dusty pink bg */
+  .quote-block {
+    background: var(--dusty);
+    border-radius: 20px;
+    padding: 40px 32px;
+    margin: 52px 0;
+    text-align: center;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--mauve);
+  }
+
+  /* Practice card — gold accent, tendresse moment */
+  .practice {
+    background: var(--white);
+    border: 2px dashed var(--gold);
+    border-radius: 20px;
+    padding: 36px;
+    margin: 52px 0;
+    position: relative;
+  }
+
+  .practice-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  .practice-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--mauve);
+    margin-bottom: 18px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+
+  .practice-text {
+    color: var(--mauve-deep);
+    line-height: 1.8;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 60px;
+    align-items: center;
+  }
+
+  .restart-btn {
+    background: transparent;
+    border: 1.5px solid var(--mauve);
+    color: var(--mauve);
+    padding: 14px 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+  }
+
+  .restart-btn:hover {
+    background: var(--mauve);
+    color: var(--cream);
+  }
+
+  .footer {
+    margin-top: 80px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border-mauve);
+    text-align: center;
+  }
+
+  .footer-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .footer-mark-line {
+    height: 1px;
+    background: var(--gold);
+    width: 18px;
+    opacity: 0.5;
+  }
+
+  .footer-mark-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.85;
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--mauve);
+    font-weight: 400;
+    opacity: 0.65;
+  }
+
+  /* ========== Animations ========== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ========== Mobile ========== */
+  @media (max-width: 600px) {
+    .container { padding: 40px 22px 60px; }
+    .brand-mark { margin-bottom: 56px; }
+    .brand-mark-line { width: 18px; }
+    .study-card { padding: 24px; }
+    .practice { padding: 26px; }
+    .quote-block { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- INTRO -->
+  <section class="intro" id="intro">
+    <div class="brand-mark">
+      <div class="brand-mark-line"></div>
+      <div class="brand-mark-text">Nasycená</div>
+      <div class="brand-mark-line"></div>
+    </div>
+
+    <h1>Jak mluvíš sama se sebou,<br><em>když dojde na jídlo?</em></h1>
+
+    <p class="lede">Ne jak se ptáš, co sníš. Ale jakým hlasem si odpovídáš.</p>
+
+    <p class="body-text">Roky jsme se učily být disciplinované. Tvrdé. Mít pevnou vůli. A přitom pravděpodobně nejsilnější věc, kterou pro svoje stravování můžeme udělat, není další pravidlo.</p>
+
+    <div class="study-card">
+      <div class="study-label">Studie</div>
+      <p class="study-text">Vzali skupinu lidí, kteří jedli emocionálně. Místo aby je učili jíst jinak, učili je přistupovat k sobě jinak. S pochopením. Bez kritiky. Deset týdnů trénovali jednu věc — laskavost k sobě. Méně emočního jedení. Méně studu.</p>
+    </div>
+
+    <p class="body-text">Když se nervový systém cítí bezpečně, nepotřebuje jídlo jako útěchu. A tvůj vnitřní hlas — ten, který tě komentuje při každém jídle — rozhoduje o tom, jestli se tvoje tělo cítí v bezpečí, nebo pod neustálou palbou.</p>
+
+    <p class="body-text">Tenhle krátký kvíz ti ukáže, který hlas u tebe teď vede slovo. Sedm otázek. Žádné hodnocení, žádná čísla. Jen pojmenování.</p>
+
+    <div class="cta-wrap">
+      <button class="start-btn" onclick="startQuiz()">Začít cestu ✦</button>
+      <button class="secondary-link" onclick="document.querySelector('h1').scrollIntoView({behavior:'smooth'})">Jak to funguje →</button>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz" id="quiz">
+    <div class="progress-text" id="progressText">Otázka 1 ze 7</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+    <div id="questionContainer"></div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="result" id="result">
+    <div class="result-label">
+      <div class="result-label-line"></div>
+      <div class="result-label-text">Tvůj dominantní hlas</div>
+      <div class="result-label-line"></div>
+    </div>
+    <h2 class="result-archetype" id="archetypeName"></h2>
+    <p class="result-tagline" id="archetypeTagline"></p>
+
+    <div class="result-section">
+      <div class="section-label">Co to znamená</div>
+      <div id="archetypeMeaning"></div>
+    </div>
+
+    <div class="quote-block">
+      <p class="quote-text" id="archetypeQuote"></p>
+    </div>
+
+    <div class="result-section">
+      <div class="section-label">Odkud to přišlo</div>
+      <div id="archetypeOrigin"></div>
+    </div>
+
+    <div class="practice">
+      <div class="practice-label">Jeden krok pro tento týden 🌸</div>
+      <h3 class="practice-title" id="practiceTitle"></h3>
+      <p class="practice-text" id="practiceText"></p>
+    </div>
+
+    <div class="result-section">
+      <div class="section-label">Kam směřuješ</div>
+      <div id="archetypeDirection"></div>
+    </div>
+
+    <div class="actions">
+      <button class="restart-btn" onclick="restart()">Vyplnit znovu</button>
+    </div>
+
+    <div class="footer">
+      <div class="footer-mark">
+        <div class="footer-mark-line"></div>
+        <div class="footer-mark-text">Nasycená</div>
+        <div class="footer-mark-line"></div>
+      </div>
+      <div class="footer-tagline">psychologie tvého stravování</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const questions = [
+    {
+      q: "Sníš o sušenku navíc, než jsi plánovala. První myšlenka, která ti proletí hlavou:",
+      options: [
+        { text: "„Tak a je to. Zase jsem to nezvládla.\"", type: "S" },
+        { text: "„Když už jsem to zkazila, tak se nažeru pořádně.\"", type: "R" },
+        { text: "„Hm, zajímavé. Co se právě teď ve mně dělo?\"", type: "L" }
+      ]
+    },
+    {
+      q: "Je úterý, máš za sebou těžký den. Otevřeš ledničku, i když nemáš hlad. Tvůj vnitřní hlas říká:",
+      options: [
+        { text: "„Nemáš hlad. Zavři tu ledničku. Žádná disciplína.\"", type: "S" },
+        { text: "„Zasloužím si to po tom, co jsem dnes dala. Sním si, co chci.\"", type: "R" },
+        { text: "„Vypadá to, že hledám útěchu. Co mi vlastně chybí?\"", type: "L" }
+      ]
+    },
+    {
+      q: "Když si dáš něco, co považuješ za 'nezdravé', během jídla se ti děje:",
+      options: [
+        { text: "Počítám si to. Vím, kolik to bylo kalorií. Cítím vinu.", type: "S" },
+        { text: "Jím rychle, abych to nemusela řešit. Nebo si dávám víc, protože „už je stejně pozdě\".", type: "R" },
+        { text: "Snažím se to jíst pomalu a všimnout si, jestli mi to vůbec chutná.", type: "L" }
+      ]
+    },
+    {
+      q: "Když na sebe pohlédneš v zrcadle těsně po jídle, co si nejčastěji řekneš?",
+      options: [
+        { text: "„Kdybych se víc kontrolovala, nevypadala bych takhle.\"", type: "S" },
+        { text: "„Stejně už je to jedno.\"", type: "R" },
+        { text: "„Tělo trávící jídlo. Není to moment pro hodnocení.\"", type: "L" }
+      ]
+    },
+    {
+      q: "Někdo ti nabídne dezert. Jaká je tvoje nejčastější reakce uvnitř?",
+      options: [
+        { text: "„Měla bych odmítnout. Ale chci ho. Asi odmítnu — a budu si na něj pak doma myslet.\"", type: "S" },
+        { text: "„Vezmu si ho — a pak ještě jeden, protože už jsem stejně 'porušila pravidlo'.\"", type: "R" },
+        { text: "„Mám teď chuť? Pokud ano, dám si. Pokud ne, nevadí.\"", type: "L" }
+      ]
+    },
+    {
+      q: "Jak často během dne myslíš na to, co jíš, jsi snědla nebo budeš jíst?",
+      options: [
+        { text: "Skoro pořád. Plánuju, hodnotím, počítám.", type: "S" },
+        { text: "Buď vůbec, nebo všechno najednou — žádný střed.", type: "R" },
+        { text: "Občas. Když přijde hlad nebo chuť, řeším to. Jindy ne.", type: "L" }
+      ]
+    },
+    {
+      q: "Když se najíš víc, než jsi „chtěla\", v noci usínáš s pocitem:",
+      options: [
+        { text: "Selhání. Zítra to musím napravit.", type: "S" },
+        { text: "Otupělosti. Už mě to nebaví řešit.", type: "R" },
+        { text: "Zvědavosti. Co se vlastně dnes dělo, že jsem hledala plnost?", type: "L" }
+      ]
+    }
+  ];
+
+  const archetypes = {
+    S: {
+      name: "Strážnice <em>pravidel</em>",
+      tagline: "Tvoje hlavní strategie je kontrola. A platí za to celé tvoje tělo.",
+      meaning: [
+        "V hlavě máš někoho, kdo ti komentuje skoro každé sousto. Ten hlas tě nemá rád, ale tváří se, že tě chrání. Říká si „kdyby nebylo mě, dávno bys vypadala hůř\".",
+        "Funguje to ale opačně. Studie ukazují, že kritický vnitřní dialog nepomáhá změně — naopak ji blokuje. Tělo pod stálou kritikou se nedostává do stavu bezpečí, ze kterého by mohlo regulovat hlad přirozeně. Místo toho se učí přežívat: buď kontrolou, nebo úniky."
+      ],
+      quote: "Disciplína nikdy nikoho neuzdravila. Jen ho naučila tišeji trpět.",
+      origin: [
+        "Tenhle hlas obvykle není tvůj. Naučila ses ho někde v dětství nebo dospívání — od matky, která komentovala, co jíš. Z časopisů. Ze školy. Ze stigmatizace, která je v naší kultuře všude.",
+        "Není to tvoje vina, že tam je. Je tvoje volba, co s ním teď uděláš."
+      ],
+      practice: {
+        title: "Pojmenuj ho",
+        text: "Tento týden, kdykoliv si všimneš, že ten hlas mluví, jen tiše řekni: „To je strážnice.\" Nemusíš s ní bojovat ani ji vyhánět. Stačí ji pojmenovat. Když má jméno, přestává být tebou — stává se hlasem. A ty si můžeš vybrat, jestli ji posloucháš."
+      },
+      direction: [
+        "Tvoje cesta nevede přes ještě tvrdší disciplínu, ani přes „úplné uvolnění\". Vede přes laskavost — která, jak říkala studie, snižuje emocionální jedení účinněji než jakákoliv pravidla. Méně kritiky uvnitř = méně potřeby tišit napětí jídlem zvenku."
+      ]
+    },
+    R: {
+      name: "<em>Rebelka</em>",
+      tagline: "Žiješ mezi extrémy. A mezi nimi je ti vyčerpaně.",
+      meaning: [
+        "Buď držíš pravidla železnou rukou, nebo je házíš za hlavu úplně. Žádný střed. Když porušíš pravidlo, často se nezastavíš u jedné sušenky — sníš jich pět, protože „už je to jedno\".",
+        "Tohle není slabá vůle. Je to logická reakce systému, kterému někdo (možná i ty sama) dlouho upíral základní věci. Tělo, které žije v omezení, vytváří rebelii jako obranu."
+      ],
+      quote: "Rebelie není problém. Je to symptom. Pravidla, proti kterým rebeluješ, byla od začátku ta špatná otázka.",
+      origin: [
+        "Pokud si pamatuješ dětství plné „neměla bys tolik\" a „tohle se nejí\", nebo dospívání plné diet, tělo se naučilo, že omezení nepřichází z péče, ale z kontroly. A reakce je odpor.",
+        "Rebelka tě chrání před něčím, co ti dlouho ubližovalo. Není zlá. Jen ji nikdo nenaučil, že některé hranice si můžeš nastavit sama — z péče, ne ze strachu."
+      ],
+      practice: {
+        title: "Najdi šedou zónu",
+        text: "Vyber jednu věc, na kterou v hlavě máš pravidlo („nikdy ne…\" / „vždycky musím…\"). Tento týden ji udělej napůl. Ne dokonale, ne zcela rebelsky. Prostě napůl. Všimni si, co se stane v tvém těle, když nemusíš být ani v jednom extrému."
+      },
+      direction: [
+        "Tvoje cesta nevede přes „víc disciplíny\". Vede přes opuštění samotného konceptu, že potřebuješ vůbec proti něčemu rebelovat. Když pravidla zmizí, rebelie ztrácí smysl. Zůstává jen jídlo. A ty."
+      ]
+    },
+    L: {
+      name: "Laskavá <em>pozorovatelka</em>",
+      tagline: "Už jsi začala. Teď jen prohlubuj.",
+      meaning: [
+        "Místo aby ses sama sebe ptala „udělala jsem to správně?\", ptáš se „co se právě teď ve mně děje?\". To je jiná úroveň. Není to lhostejnost — je to zvědavost bez soudu.",
+        "Tribole a Resch tomu říkají Food Anthropologist a Nurturer — neutrální pozorovatel a soucitný hlas. Jsou to dva ze tří hlasů, které potřebuješ, abys mohla jíst klidně."
+      ],
+      quote: "Když se tvůj nervový systém cítí bezpečně, nepotřebuje jídlo jako útěchu.",
+      origin: [
+        "Tahle pozice se obvykle nerodí v dětství. Většina z nás se k ní propracuje. Možná díky terapii. Možná díky knihám. Možná díky tomu, že už ti došly síly bojovat se sebou."
+      ],
+      practice: {
+        title: "Drž laskavost při pádech",
+        text: "Tento týden, až přijde moment, kdy uděláš něco, co se ti „nelíbí\" — sníš víc, sníš pozdě, sníš věc, kterou jsi nechtěla — řekni si přesně tu jednu větu, kterou bys řekla blízké kamarádce. Nahlas. Tělo potřebuje slyšet, že je v bezpečí."
+      },
+      direction: [
+        "Tvoje cesta není o tom „naučit se to\". Je o tom udržet to. Když přijde stres nebo těžké období, staré hlasy se pravděpodobně vrátí. To není návrat o dva kroky zpět — to je test toho, co jsi se naučila. Laskavost je tréninkový sval, ne stav."
+      ]
+    }
+  };
+
+  let currentQuestion = 0;
+  let answers = [];
+
+  function startQuiz() {
+    document.getElementById('intro').style.display = 'none';
+    document.getElementById('quiz').classList.add('active');
+    showQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showQuestion() {
+    const q = questions[currentQuestion];
+    const progress = ((currentQuestion) / questions.length) * 100;
+    document.getElementById('progressFill').style.width = progress + '%';
+    document.getElementById('progressText').textContent = `Otázka ${currentQuestion + 1} ze ${questions.length}`;
+
+    let html = `
+      <div class="question-number">${String(currentQuestion + 1).padStart(2, '0')} / ${String(questions.length).padStart(2, '0')}</div>
+      <p class="question-text">${q.q}</p>
+      <div class="options">
+    `;
+    q.options.forEach((opt) => {
+      html += `<button class="option" onclick="selectAnswer('${opt.type}')">${opt.text}</button>`;
+    });
+    html += '</div>';
+
+    const container = document.getElementById('questionContainer');
+    container.style.opacity = '0';
+    setTimeout(() => {
+      container.innerHTML = html;
+      container.style.transition = 'opacity 0.4s ease';
+      container.style.opacity = '1';
+    }, 200);
+  }
+
+  function selectAnswer(type) {
+    answers.push(type);
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      showQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    const counts = { S: 0, R: 0, L: 0 };
+    answers.forEach(a => counts[a]++);
+    let max = 0;
+    let dominant = 'L';
+    for (const key in counts) {
+      if (counts[key] > max) {
+        max = counts[key];
+        dominant = key;
+      }
+    }
+
+    const arch = archetypes[dominant];
+
+    document.getElementById('quiz').classList.remove('active');
+    document.getElementById('result').classList.add('active');
+
+    document.getElementById('archetypeName').innerHTML = arch.name;
+    document.getElementById('archetypeTagline').textContent = arch.tagline;
+    document.getElementById('archetypeMeaning').innerHTML =
+      arch.meaning.map(p => `<p class="section-text">${p}</p>`).join('');
+    document.getElementById('archetypeQuote').textContent = arch.quote;
+    document.getElementById('archetypeOrigin').innerHTML =
+      arch.origin.map(p => `<p class="section-text">${p}</p>`).join('');
+    document.getElementById('practiceTitle').textContent = arch.practice.title;
+    document.getElementById('practiceText').textContent = arch.practice.text;
+    document.getElementById('archetypeDirection').innerHTML =
+      arch.direction.map(p => `<p class="section-text">${p}</p>`).join('');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function restart() {
+    currentQuestion = 0;
+    answers = [];
+    document.getElementById('result').classList.remove('active');
+    document.getElementById('intro').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
