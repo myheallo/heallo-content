@@ -12,16 +12,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream: #FAF8F4;
+      --cream: #FFFFFF;
       --black: #1A1A18;
       --muted: #6B6860;
       --hint: #A8A49C;
-      --border: rgba(26,26,24,0.12);
-      --border-mid: rgba(26,26,24,0.22);
+      --border: rgba(26,26,24,0.10);
+      --border-mid: rgba(26,26,24,0.20);
       --surface: #FFFFFF;
-      --teal: #1D9E75;
-      --teal-dark: #0F6E56;
-      --teal-light: #E1F5EE;
+      --teal: #FF6719;
+      --teal-dark: #D94F0D;
+      --teal-light: #FFF1EB;
       --purple: #7F77DD;
       --purple-light: #EEEDFE;
       --pink: #D4537E;
@@ -234,7 +234,7 @@
     }
     .score-tile .s-label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
     .score-tile .s-value { font-size: 28px; font-weight: 500; color: var(--black); line-height: 1; }
-    .score-tile.main { background: var(--teal-light); border-color: rgba(29,158,117,0.2); }
+    .score-tile.main { background: var(--teal-light); border-color: rgba(255,103,25,0.2); }
     .score-tile.main .s-value { color: var(--teal-dark); }
 
     .area-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem; }
@@ -332,7 +332,7 @@
   const AREAS = [
     {
       name: "Svolení jíst",
-      color: "#1D9E75",
+      color: "#FF6719",
       desc: {
         low: "Stále nosíš hodně pravidel o 'dobrém' a 'špatném' jídle. Tohle je výchozí bod pro většinu žen — a je to přesně tam, kde práce s intuitivním stravováním začíná.",
         mid: "Někdy si svolení dáváš, někdy ne. Vnitřní potravinová policie stále zasahuje. Je tu prostor se jí podívat na ruce.",
