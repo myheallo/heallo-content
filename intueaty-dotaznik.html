@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kde jsem teď? – Intueaty dotazník | HEALLO®</title>
+  <meta name="description" content="Krátký dotazník ti ukáže, ve které oblasti vztahu k jídlu a tělu jsi teď — a kde je prostor pro růst.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F4;
+      --black: #1A1A18;
+      --muted: #6B6860;
+      --hint: #A8A49C;
+      --border: rgba(26,26,24,0.12);
+      --border-mid: rgba(26,26,24,0.22);
+      --surface: #FFFFFF;
+      --teal: #1D9E75;
+      --teal-dark: #0F6E56;
+      --teal-light: #E1F5EE;
+      --purple: #7F77DD;
+      --purple-light: #EEEDFE;
+      --pink: #D4537E;
+      --pink-light: #FBEAF0;
+      --amber: #BA7517;
+      --amber-light: #FAEEDA;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .logo {
+      font-family: 'EB Garamond', serif;
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    .logo span {
+      color: var(--teal);
+    }
+
+    /* Intro */
+    .intro { margin-bottom: 2.5rem; }
+    .intro h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 1rem;
+    }
+    .intro p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* Progress */
+    .progress-wrap { margin-bottom: 2rem; }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--hint);
+      margin-bottom: 8px;
+    }
+    .progress-bar {
+      background: rgba(26,26,24,0.08);
+      border-radius: 999px;
+      height: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: var(--teal);
+      height: 3px;
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--hint);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Question card */
+    .q-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .q-card.error { border-color: #D85A30; }
+
+    .q-text {
+      font-size: 17px;
+      color: var(--black);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .scale {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .opt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      border: 0.5px solid transparent;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .opt:hover { background: var(--cream); }
+    .opt.selected {
+      background: var(--teal-light);
+      border-color: rgba(29,158,117,0.25);
+    }
+
+    .opt input[type=radio] {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--border-mid);
+      border-radius: 50%;
+      flex-shrink: 0;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.15s;
+    }
+    .opt input[type=radio]:checked {
+      border-color: var(--teal);
+      background: var(--teal);
+    }
+    .opt input[type=radio]:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px; height: 6px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .opt-label {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .opt.selected .opt-label { color: var(--black); font-weight: 500; }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+    .btn {
+      background: transparent;
+      border: 0.5px solid var(--border-mid);
+      border-radius: var(--radius-sm);
+      padding: 10px 22px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--black);
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn:hover { background: rgba(26,26,24,0.04); }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: white;
+      font-weight: 500;
+    }
+    .btn-primary:hover { background: var(--teal-dark); border-color: var(--teal-dark); color: white; }
+    .btn.hidden { visibility: hidden; }
+
+    /* Result */
+    .result { display: none; }
+    .result.active { display: block; }
+
+    .result-header { margin-bottom: 2rem; }
+    .result-header h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+    .result-header p { font-size: 16px; color: var(--muted); line-height: 1.75; }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+    .score-tile {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+    }
+    .score-tile .s-label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+    .score-tile .s-value { font-size: 28px; font-weight: 500; color: var(--black); line-height: 1; }
+    .score-tile.main { background: var(--teal-light); border-color: rgba(29,158,117,0.2); }
+    .score-tile.main .s-value { color: var(--teal-dark); }
+
+    .area-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem; }
+
+    .area-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .area-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .area-name { font-size: 15px; font-weight: 500; color: var(--black); }
+    .area-pct { font-size: 13px; color: var(--muted); }
+    .bar-bg {
+      background: rgba(26,26,24,0.07);
+      border-radius: 999px;
+      height: 5px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .bar-fill { height: 5px; border-radius: 999px; transition: width 0.7s ease; }
+    .area-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    .disclaimer {
+      font-size: 12px;
+      color: var(--hint);
+      line-height: 1.7;
+      padding-top: 1.5rem;
+      border-top: 0.5px solid var(--border);
+      margin-top: 1.5rem;
+    }
+    .disclaimer a { color: var(--teal); text-decoration: none; }
+    .disclaimer a:hover { text-decoration: underline; }
+
+    .restart-btn { margin-top: 1.5rem; }
+
+    @media (max-width: 480px) {
+      .intro h1 { font-size: 28px; }
+      .page { padding: 2rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="logo">HEALLO<span>®</span> · Intueaty</div>
+
+  <!-- Quiz -->
+  <div id="quiz-area">
+    <div class="intro">
+      <h1>Kde jsem teď?</h1>
+      <p>Krátký dotazník ti ukáže, ve které oblasti vztahu k jídlu a tělu jsi teď — a kde je prostor pro růst. Není to test. Není tu správná odpověď.</p>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span id="progress-text">Otázka 1 z 12</span>
+        <span id="progress-pct">8 %</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:8%"></div></div>
+    </div>
+
+    <div id="q-container"></div>
+
+    <div class="nav">
+      <button class="btn hidden" id="btn-back" onclick="goBack()">← Zpět</button>
+      <button class="btn btn-primary" id="btn-next" onclick="goNext()">Další →</button>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="result" id="result-area">
+    <div class="result-header">
+      <h2 id="result-title"></h2>
+      <p id="result-intro"></p>
+    </div>
+    <div class="score-grid" id="score-grid"></div>
+    <div class="area-cards" id="area-cards"></div>
+    <div class="disclaimer">
+      Tento dotazník je orientační — není diagnostickým nástrojem. Pokud tě výsledky zaujaly a chceš jít hlouběji, sérii <strong>Intueaty</strong> najdeš na <a href="https://myheallo.substack.com" target="_blank">Substack</a>.
+    </div>
+    <div class="restart-btn">
+      <button class="btn" onclick="restart()">Začít znovu</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const LABELS = ["Vůbec ne", "Málokdy", "Někdy", "Často", "Téměř vždy"];
+
+  const AREAS = [
+    {
+      name: "Svolení jíst",
+      color: "#1D9E75",
+      desc: {
+        low: "Stále nosíš hodně pravidel o 'dobrém' a 'špatném' jídle. Tohle je výchozí bod pro většinu žen — a je to přesně tam, kde práce s intuitivním stravováním začíná.",
+        mid: "Někdy si svolení dáváš, někdy ne. Vnitřní potravinová policie stále zasahuje. Je tu prostor se jí podívat na ruce.",
+        high: "Svolení jíst máš z velké části internalizované. Vina kolem jídla ustupuje — to je velký krok."
+      }
+    },
+    {
+      name: "Emoce a jídlo",
+      color: "#7F77DD",
+      desc: {
+        low: "Jídlo ti teď slouží jako hlavní způsob regulace emocí. To není selhání — je to naučená strategie. Intuitivní stravování ti nabízí jiné nástroje.",
+        mid: "Emocionální jídlo se u tebe objevuje, ale ne vždy. Dobré místo pro prozkoumání — co jsou tvoje spouštěče?",
+        high: "Máš dobrou schopnost rozlišit fyzický hlad od emočního. Tohle je základ, na kterém lze stavět."
+      }
+    },
+    {
+      name: "Důvěra v tělo",
+      color: "#D4537E",
+      desc: {
+        low: "Tělu zatím moc nevěříš — a diety na tom mají velký podíl. Znovu budovat tuto důvěru je pomalý a krásný proces.",
+        mid: "Někdy slyšíš tělo, někdy ho přebíjíš myšlenkami. Interoceptivní vědomí se dá kultivovat.",
+        high: "Tělu nasloucháš a věříš jeho signálům. Tohle je jádro intuitivního stravování."
+      }
+    },
+    {
+      name: "Jemná výživa",
+      color: "#BA7517",
+      desc: {
+        low: "Výživa je pro tebe zatím spojena s pravidly nebo úzkostí. V intuitivním stravování přichází výživa jako poslední — až jsou položeny základy.",
+        mid: "Vztah k výživě se uvolňuje, ale stále je tu napětí. Správný směr.",
+        high: "Výživa pro tebe není dieta — je to péče. To je přesně duch jemné výživy."
+      }
+    }
+  ];
+
+  const QUESTIONS = [
+    { area: 0, text: "Dávám si svolení jíst, co mi chutná, bez pocitu viny.", reverse: false },
+    { area: 0, text: "Mám zakázané potraviny, které si nesmím dovolit.", reverse: true },
+    { area: 0, text: "Když sním něco 'nezdravého', zlobím se na sebe.", reverse: true },
+    { area: 1, text: "Dokážu rozpoznat, kdy jsem fyzicky hladová.", reverse: false },
+    { area: 1, text: "Jím i tehdy, když fyzicky hladová nejsem — z nudy, stresu nebo smutku.", reverse: true },
+    { area: 1, text: "Jídlo pro mě není hlavní způsob, jak se uklidnit nebo potěšit.", reverse: false },
+    { area: 2, text: "Věřím, že moje tělo mi říká, kdy a kolik jíst.", reverse: false },
+    { area: 2, text: "Ignoruju pocit sytosti a jím dál, protože 'musím doíst'.", reverse: true },
+    { area: 2, text: "Spoléhám se na vnitřní signály těla — ne na hodiny nebo pravidla.", reverse: false },
+    { area: 3, text: "Vybírám jídlo podle toho, jak se po něm cítím — ne podle diet.", reverse: false },
+    { area: 3, text: "Výživa je pro mě součást péče o sebe — ne seznam zákazů.", reverse: false },
+    { area: 3, text: "Jím způsobem, který mi dává energii a nepřináší úzkost.", reverse: false }
+  ];
+
+  let current = 0;
+  let answers = new Array(QUESTIONS.length).fill(null);
+
+  function render() {
+    const q = QUESTIONS[current];
+    const area = AREAS[q.area];
+    const saved = answers[current];
+
+    document.getElementById('q-container').innerHTML = `
+      <div class="section-label">${area.name}</div>
+      <div class="q-card" id="qcard">
+        <div class="q-text">${q.text}</div>
+        <div class="scale">
+          ${LABELS.map((l, i) => {
+            const val = i + 1;
+            const sel = saved === val ? ' selected' : '';
+            return `<label class="opt${sel}" id="opt-${val}">
+              <input type="radio" name="q" value="${val}" ${saved === val ? 'checked' : ''} onchange="selectAnswer(${val})">
+              <span class="opt-label">${l}</span>
+            </label>`;
+          }).join('')}
+        </div>
+      </div>
+    `;
+
+    const pct = Math.max(8, Math.round(((current + 1) / QUESTIONS.length) * 100));
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = `Otázka ${current + 1} z ${QUESTIONS.length}`;
+    document.getElementById('progress-pct').textContent = pct + ' %';
+
+    const backBtn = document.getElementById('btn-back');
+    backBtn.classList.toggle('hidden', current === 0);
+
+    const nextBtn = document.getElementById('btn-next');
+    nextBtn.textContent = current === QUESTIONS.length - 1 ? 'Zobrazit výsledek →' : 'Další →';
+  }
+
+  function selectAnswer(val) {
+    answers[current] = val;
+    document.querySelectorAll('.opt').forEach((el, i) => {
+      el.classList.toggle('selected', i + 1 === val);
+    });
+    const radio = document.querySelector(`input[value="${val}"]`);
+    if (radio) radio.checked = true;
+  }
+
+  function goNext() {
+    if (answers[current] === null) {
+      const card = document.getElementById('qcard');
+      card.classList.add('error');
+      setTimeout(() => card.classList.remove('error'), 1200);
+      return;
+    }
+    if (current < QUESTIONS.length - 1) {
+      current++;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      showResult();
+    }
+  }
+
+  function goBack() {
+    if (current > 0) {
+      current--;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function computeScores() {
+    const sums = [0, 0, 0, 0];
+    const counts = [0, 0, 0, 0];
+    QUESTIONS.forEach((q, i) => {
+      if (answers[i] !== null) {
+        const raw = answers[i];
+        const val = q.reverse ? (6 - raw) : raw;
+        sums[q.area] += val;
+        counts[q.area]++;
+      }
+    });
+    return sums.map((s, i) => counts[i] > 0 ? Math.round((s / (counts[i] * 5)) * 100) : 0);
+  }
+
+  function showResult() {
+    const scores = computeScores();
+    const overall = Math.round(scores.reduce((a, b) => a + b, 0) / 4);
+
+    document.getElementById('quiz-area').style.display = 'none';
+    const ra = document.getElementById('result-area');
+    ra.classList.add('active');
+
+    const title = overall >= 70
+      ? "Jsi na dobré cestě"
+      : overall >= 45
+      ? "Začínáš naslouchat"
+      : "Tady začíná cesta";
+
+    const intro = overall >= 70
+      ? "Tvůj vztah k jídlu a tělu má pevné základy. Jsou oblasti, kde se dá jít hlouběji — a to je dobře."
+      : overall >= 45
+      ? "Někde slyšíš své tělo dobře, jinde ti stále šeptají stará dietní pravidla. To je přesně ta hranice, kde intuitivní stravování pracuje."
+      : "Hodně let diet zanechává stopy. Ale tím, že jsi tady a ptáš se, to začíná. Tohle je ten první krok.";
+
+    document.getElementById('result-title').textContent = title;
+    document.getElementById('result-intro').textContent = intro;
+
+    document.getElementById('score-grid').innerHTML = `
+      <div class="score-tile main">
+        <div class="s-label">Celkové skóre</div>
+        <div class="s-value">${overall} %</div>
+      </div>
+      ${AREAS.map((a, i) => `
+        <div class="score-tile">
+          <div class="s-label">${a.name}</div>
+          <div class="s-value">${scores[i]} %</div>
+        </div>
+      `).join('')}
+    `;
+
+    document.getElementById('area-cards').innerHTML = AREAS.map((a, i) => {
+      const s = scores[i];
+      const level = s >= 70 ? 'high' : s >= 45 ? 'mid' : 'low';
+      return `
+        <div class="area-card">
+          <div class="area-top">
+            <span class="area-name">${a.name}</span>
+            <span class="area-pct">${s} %</span>
+          </div>
+          <div class="bar-bg"><div class="bar-fill" style="width:${s}%; background:${a.color}"></div></div>
+          <div class="area-desc">${a.desc[level]}</div>
+        </div>
+      `;
+    }).join('');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function restart() {
+    current = 0;
+    answers = new Array(QUESTIONS.length).fill(null);
+    document.getElementById('quiz-area').style.display = 'block';
+    document.getElementById('result-area').classList.remove('active');
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  render();
+</script>
+</body>
+</html>
